@@ -1,0 +1,466 @@
+/* Override grid layout to be smaller. */
+.container_12 {
+    width: 100%;
+}
+
+/* Mobile version only uses 1 column, so set width of grids to 100% */
+.container_12 .grid_9 {
+    width: calc(100% - 20px);
+}
+
+.container_12 .grid_3 {
+    width: calc(100% - 20px);
+}
+
+body {
+    width: 100%;
+    min-width: 10%;
+}
+
+/************************************/
+/*********** Header *****************/
+/************************************/
+
+header {
+    position: relative;
+}
+
+#mobile-menu-button {
+    position: absolute;
+    right: 10px;
+    height: 100%;
+    display: inline-block;
+    top: 40%;
+
+}
+
+#mobile-nav-bar {
+    display: block;
+    width: 100%;
+    background-color: #888888;
+}
+
+#mobile-nav-bar a {
+    display: block;
+    padding: 5px 15px 5px 0px;
+    text-align: right;
+    font-size: 20px;
+    text-transform: capitalize;
+    font-weight: bold;
+    text-decoration: none;
+    color: #cccccc;
+}
+
+#mobile-nav-bar a:hover {
+    color: #ce2127;
+}
+
+/* Make the banner logo take up the whole width (centers it according to whole page width) */
+.banner-logo-container.grid_3 {
+    width: 100%;
+}
+
+/* hide the nav links on mobile */
+.top-nav-section {
+    display: none;
+}
+
+.icon-bar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    border-radius: 1px;
+    border-bottom: 3px;
+    margin-bottom: 3px;
+    background-color: #000000
+}
+
+
+/************************************/
+/************* Sidebar **************/
+/************************************/
+
+/* Hide sidebar when on mobile*/
+aside.grid_3 {
+    display: none;
+}
+
+.separator {
+    display: none;
+}
+
+figure.no-margin > img {
+    width: 65%;
+}
+
+/************************************/
+/*********** Home Page **************/
+/************************************/
+
+/* Use up all available space */
+#home-page {
+    width: 100%;
+}
+
+/* Show event-info in top right corner of the backdrop and
+    align the headlines accordingly */
+.event-headline > h1 {
+    float: left;
+    font-size: x-large;
+    margin: 0;
+    width: calc(60% - 20px);
+}
+
+.event-headline > h1.visible-mobile {
+    float: right;
+    font-size: x-large;
+    margin: 0;
+    font-weight: bold;
+    margin: 5px 0px 5px 10px;
+
+    /* Override the general rule from both h1's*/
+    width: calc(40% - 20px) !important;
+
+}
+
+/* Make sure the paragraph text does not interflow with the floated headlines */
+.event-headline {
+    clear: both;
+}
+
+/* Remove the backdrop */
+.news-item-main-backdrop {
+    background: 0, 0, 0, 0;
+    float: left;
+    margin-bottom: 10px;
+}
+
+/* Horizontal Separator Line between news items.*/
+#home-page hr {
+    width:90%;
+    height: 1px !important;
+    background: #000000;
+    margin: 0px auto 20px auto;
+}
+
+/* Make the text even smaller if the screen is small */
+@media screen and (max-width: 600px) {
+    .event-headline > h1 , .event-headline > h1.visible-mobile{
+        font-size: large;
+    }
+
+    .news-item-main-backdrop > p{
+        font-size: smaller;
+    }
+}
+
+/* I decided to keep the main articles despite my previous design.
+   Instead of linking to articles, i just remove the pictures when the
+   display is small enough.
+*/
+@media screen and (max-width: 500px) {
+    .news-item-images {
+        display: none;
+    }
+
+    /* Spread the paragraphs to full length */
+    .news-item > article > p, .article-headline-container{
+        width: 100%
+    }
+}
+
+/************************************/
+/*********** Movie Page *************/
+/************************************/
+
+/* Set grid 9 to use up the whole page width and add room for margins */
+#movie-page.container_12 .grid_9 {
+    width: calc(100% - 20px);
+}
+
+/* Adds padding between mobile headers */
+.movie-info-container {
+    display: inline-block;
+    width: 100%;
+    margin: 15px 0px 10px 0px;
+}
+
+.movie-info-image {
+    position: relative;
+    max-width: 460px;
+    margin: 0px auto;
+}
+
+.movie-info-image > h3 {
+    position: absolute;
+    margin: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.movie-info-image > img {
+    display: inline-block;
+    width: 100%;
+    min-height: 200px;
+    max-height: 200px;
+
+    /* Override desktop css */
+    float: none;
+    margin: 0px 0px
+}
+
+.movie-info {
+    padding-top: 10px;
+    display: inline-block;
+    width: calc(100% - 10px);
+    vertical-align: top;
+    position: relative;
+}
+
+.movie-info-list {
+    width: 70%;
+}
+
+.movie-info-list > ul > li {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+
+    margin: 0px 0px 0px 0px;
+}
+
+.movie-info-list > ul {
+    padding: 0px;
+}
+
+.rating {
+    width: 30%;
+    height: 100%;
+    position: absolute;
+    right: 0px;
+
+}
+
+.rating > img {
+    float: right;
+}
+
+.rating > a {
+    position: absolute;
+    right: 0px;
+    bottom: 20px;
+}
+
+@media screen and (max-width: 500px) {
+    .rating {
+        display: none;
+    }
+
+    .movie-info-list {
+        width: 100%;
+    }
+}
+
+
+
+/* Add mobile headers and borders */
+.mobile-header {
+    display: inline-block;
+    width: 100%;
+    border-radius: 10px;
+    border: thin;
+    box-shadow: 2px 2px 2px #888888;
+    background-color: #c2c2c2;
+}
+
+.mobile-header > h2 {
+    display: inline-block;
+    width: calc(100% - 35px);
+    padding: 0px 5px 5px 5px;
+    margin: 0px;
+}
+
+.mobile-border {
+    border-left: groove;
+    border-right: groove;
+    border-bottom: groove;
+    border-radius: 0px 0px 10px 10px;
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+
+/* Adds padding between mobile headers */
+.similar-movies-container {
+    margin-bottom: 10px;
+}
+
+.similar-movies {
+    padding-top: 10px;
+}
+
+.similar-movies > .image-grid {
+    display: block;
+    margin: 0px auto;
+    max-width: 800px;
+    width: 100%;
+}
+
+.similar-movies > .similar-movie-expanded {
+    display: none;
+}
+
+/* Only display title and genre of similar movies to conserve space */
+.movie-1 > img, .movie-1 > .info-container > p:nth-child(3) {
+    display: none;
+}
+
+.image-grid {
+    margin: 0px auto;
+}
+
+/* For mobile version just make the imgs larger and spread them out evenly */
+.image-grid > a > img {
+    margin: 10px 4.5%;
+    width: 23%;
+    max-width: 200px;
+}
+
+/*.movie-1 , .movie-2, .movie-3, .movie-4, .movie-5, .movie-6 {*/
+    /*display: inline-block !important;*/
+    /*visibility: visible;*/
+/*}*/
+
+
+/************************************/
+/************* Comments *************/
+/************************************/
+
+/* Add more room for heading to span multiple lines */
+.comment-text > h4 {
+    margin-bottom: 25px;
+    font-size: medium;
+}
+
+/************************************/
+/********* Recommendations **********/
+/************************************/
+
+/* Replace search bar with smaller image */
+.search-box {
+    background: url(../images/SearchBarSmall.png) no-repeat;
+    width: 460px;
+    height: 31px;
+    margin: 0px auto;
+}
+
+/* Scale input box as well */
+.search-box > input {
+    font-size: inherit;
+    padding:0px 50px 0px 25px; /* Limit input to within search box boundaries */
+    text-align: left;
+    width: 100%; /* Width of image - padding left and right*/
+}
+/* Center align title when on mobile.*/
+.search-results-container > h4 {
+    margin: 10px auto;
+    max-width: 460px;
+}
+
+/* Hide movies list */
+.list-wrapper {
+    display: none;
+}
+
+/* Search Results */
+.search-results {
+    position: relative;
+    max-width: 460px;
+    margin: 0px auto; /* Center */
+}
+
+
+/*Buttons to navigate results */
+.search-results > button {
+    height: 25px;
+    width: 25px;
+
+}
+
+.button-right {
+    background-image: url("images/button-right");
+    position: absolute;
+    right: 10px;
+    top: 40%;
+
+}
+
+.button-left {
+    background-image: url("images/button-left");
+    position: absolute;
+    left: 10px;
+    top: 40%;
+}
+
+/* position image and text overlay */
+.search-result > a > img {
+    position: relative;
+    width: 100%;
+    max-height: 250px;
+}
+
+.search-result > h3 {
+    position: absolute;
+    bottom: 0px;
+    margin: 0;
+    left: 0;
+    width: 100%;
+}
+
+.text-overlay {
+    color: lightgray;
+    letter-spacing: -1px;
+    background: rgb(0, 0, 0); /* fallback color */
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+}
+
+
+/************************************/
+/************* Footer ***************/
+/************************************/
+
+footer {
+    width: 100%;
+    clear: both;
+    height: 20px;
+    background-color: #CBCBCB;
+}
+
+footer > p {
+    font-size: smaller;
+    text-align: center;
+}
+
+/************************************/
+/*************** Misc ***************/
+/************************************/
+.horizontal-separator {
+    display: none;
+}
+
+br {
+    display: none;
+}
+
+.visible-mobile {
+    display: inherit;
+}
+
+.visible-desktop {
+    display: none;
+}
+
+
+
