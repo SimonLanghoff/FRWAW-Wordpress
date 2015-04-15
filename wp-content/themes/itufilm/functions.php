@@ -101,18 +101,7 @@ function itufilm_comments_number($count)
 }
 
 
-// List of movies
-function get_movie_list(){
-    return array(
-        'movie1' => __( 'blue velvet', 'similar-movie' ),
-        'movie2' => __( 'twin-peaks', 'similar-movie' ),
-        'movie3' => __( 'eraser head', 'similar-movie' ),
-        'movie4' => __( 'x-files', 'similar-movie' ),
-        'movie5' => __( 'mulholland drive', 'similar-movie' ),
-        'movie6' => __( 'lost highway', 'similar-movie' ),
-    );
-}
-
+/* TODO: make your own */
 
 add_theme_support('post-thumbnails');
 
@@ -151,7 +140,14 @@ function add_movie_meta ($args) {
                 'id' => $prefix . 'similar-movies',
                 'name' => 'Similar Movies',
                 'type' => 'select_advanced',
-                'options' => get_movie_list(),
+                'options' => array(
+                    'movie1' => __( 'blue velvet', 'similar-movie' ),
+                    'movie2' => __( 'twin-peaks', 'similar-movie' ),
+                    'movie3' => __( 'eraser head', 'similar-movie' ),
+                    'movie4' => __( 'x-files', 'similar-movie' ),
+                    'movie5' => __( 'mulholland drive', 'similar-movie' ),
+                    'movie6' => __( 'lost highway', 'similar-movie' ),
+                ),
 
                 'multiple'    => true,
                 'std'         => 'blue velvet',
@@ -264,35 +260,6 @@ function add_event_info ($args) {
                     'showTimepicker' => true,
                     'stepMinute'     => 15
                 ),
-            ),
-        )
-    );
-
-    return $args;
-}
-
-// Meta box for recommendations
-function add_recommendation ($args) {
-    $prefix = 'siml_';
-
-    $args[] = array (
-        'id' => 'recommendation',
-        'title' => 'Recommendation',
-        'pages' => array('recommendation'),
-        'context' => 'normal',
-        'priority' => 'high',
-
-        'fields' => array(
-            array(
-                //            list of similar movie id's
-                'id' => $prefix . 'similar-movies',
-                'name' => 'Similar Movies',
-                'type' => 'select_advanced',
-                'options' => get_movie_list(),
-                'multiple'    => true,
-                'std'         => 'blue velvet',
-                'placeholder' => __( 'Select similar movies', 'similar-movie' ),
-
             ),
         )
     );
