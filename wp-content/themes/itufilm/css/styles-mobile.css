@@ -61,7 +61,7 @@ header {
 }
 
 /* hide the nav links on mobile */
-.top-nav-section {
+.menu-navigation-container {
     display: none;
 }
 
