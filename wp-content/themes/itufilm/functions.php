@@ -110,6 +110,7 @@ function get_movie_list(){
         'movie4' => __( 'x-files', 'similar-movie' ),
         'movie5' => __( 'mulholland drive', 'similar-movie' ),
         'movie6' => __( 'lost highway', 'similar-movie' ),
+        'movie7' => __( 'twin peaks series', 'similar-movie' ),
     );
 }
 
@@ -119,6 +120,7 @@ add_theme_support('post-thumbnails');
 add_filter('rwmb_meta_boxes', 'add_movie_meta');
 add_filter('rwmb_meta_boxes', 'add_news_info');
 add_filter('rwmb_meta_boxes', 'add_event_info');
+add_filter('rwmb_meta_boxes', 'add_recommendation');
 
 function add_movie_meta ($args) {
     $prefix = 'siml_';
@@ -147,16 +149,14 @@ function add_movie_meta ($args) {
                 'type' => 'number'
             ),
             array(
-                //            list of similar movie id's
+                // list of similar movie id's
                 'id' => $prefix . 'similar-movies',
                 'name' => 'Similar Movies',
                 'type' => 'select_advanced',
                 'options' => get_movie_list(),
-
                 'multiple'    => true,
                 'std'         => 'blue velvet',
-                'placeholder' => __( 'Select similar movies', 'similar-movie' ),
-
+                'placeholder' => __( 'Select similar movies', 'similar-movies' ),
             ),
             array(
                 'id' => $prefix . 'type',
@@ -285,14 +285,12 @@ function add_recommendation ($args) {
         'fields' => array(
             array(
                 //            list of similar movie id's
-                'id' => $prefix . 'similar-movies',
-                'name' => 'Similar Movies',
+                'id' => $prefix . 'recommendations',
+                'name' => 'Recommended Movie',
                 'type' => 'select_advanced',
                 'options' => get_movie_list(),
-                'multiple'    => true,
-                'std'         => 'blue velvet',
-                'placeholder' => __( 'Select similar movies', 'similar-movie' ),
-
+                'multiple'    => false,
+                'placeholder' => __( 'Select Recommended Movie', 'recommendations' ),
             ),
         )
     );
@@ -318,13 +316,13 @@ function get_movie_info($movie_id){
     $movie_title = null;
     switch($movie_id){
         case "movie1":
-            $movie_title = null;
+            $movie_title = "blue-velvet-1986";
             break;
         case "movie2":
             $movie_title = "twin-peaks-fire-walk-with-me-1992";
             break;
         case "movie3":
-            // TODO
+            $movie_title = "eraser-head-1977";
             break;
         case "movie4":
             // TODO

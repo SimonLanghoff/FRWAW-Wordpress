@@ -15,6 +15,7 @@
         $recommendations_number = rwmb_meta( 'siml_rating', 'type=number' );
         $similar_movie_ids = rwmb_meta( 'siml_similar-movies', 'type=select&multiple=true' );
 
+
         ?>
 
 
@@ -99,6 +100,8 @@
                         // Get the correct movie title which can be used to fetch the posts:
                         // TODO:
                         $movie_title = get_movie_info($movie_id);
+
+
 
 
 //                        $args = array(
