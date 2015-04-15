@@ -142,7 +142,7 @@ function add_movie_meta ($args) {
                 'type' => 'select_advanced',
                 'options' => array(
                     'movie1' => __( 'blue velvet', 'similar-movie' ),
-                    'movie2' => __( 'twin peaks', 'similar-movie' ),
+                    'movie2' => __( 'twin-peaks', 'similar-movie' ),
                     'movie3' => __( 'eraser head', 'similar-movie' ),
                     'movie4' => __( 'x-files', 'similar-movie' ),
                     'movie5' => __( 'mulholland drive', 'similar-movie' ),
@@ -267,6 +267,75 @@ function add_event_info ($args) {
     return $args;
 }
 
+
+// Add a filter such that we can query custom posts using the title.
+add_filter( 'posts_where', 'title_like_posts_where', 10, 2 );
+function title_like_posts_where( $where, &$wp_query ) {
+    global $wpdb;
+    if ( $post_title_like = $wp_query->get( 'post_title_like' ) ) {
+        $where .= ' AND ' . $wpdb->posts . '.post_title LIKE \'' . esc_sql( $wpdb->esc_like( $post_title_like ) ) . '%\'';
+    }
+    return $where;
+}
+
+// Simple function used to get the correct movie based on its id.
+// This should really be done by matching together the custom post type meta box with the corresponding
+// movie, but this will do for simple showcasing of the functionality.
+function get_movie_info($movie_title){
+    $args = array(
+        'post_title_like' => $movie_title
+    );
+    // TODO: do new here so we don't have to clear.
+    return new WP_Query( $args );
+
+//
+//    switch($movie_title){
+//        case "movie1":
+//            echo("movie1");
+//
+//            break;
+//        case "movie2":
+//            echo("movie2");
+//            break;
+//        case "movie3":
+//            echo("movie3");
+//            break;
+//        case "movie4":
+//            echo("movie4");
+//            break;
+//        case "movie5":
+//            echo("movie5");
+//            break;
+//        case "movie6":
+//            echo("movie6");
+//            break;
+//        default:
+//            echo("Movie not recognized!");
+//            break;
+//    }
+//
+//    $args = array(
+//        'post_type' => 'my_post_type',
+//        'post_status' => 'publish',
+//        'posts_per_page' => -1
+//    );
+//    $posts = new WP_Query( $args );
+//    if ( $posts -> have_posts() ) {
+//        while ( $posts -> have_posts() ) {
+//
+//            the_content();
+//            // Or your video player code here
+//
+//        }
+//    }
+//    wp_reset_query();
+//
+//    return $result;
+
+}
+
 ?>
+
+
 
 

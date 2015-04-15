@@ -5,23 +5,33 @@
 <?php if (have_posts()) :?>
     <?php while (have_posts()) : the_post();?>
 
+        <!-- Fetch all the needed meta data for each movie.  -->
+        <?php
+        // Output poster image
+        $images_poster = rwmb_meta( 'siml_movie_poster', 'type=image' );
+
+        // Get the rating
+        $rating = rwmb_meta( 'siml_rating', 'type=number' );
+        $recommendations_number = rwmb_meta( 'siml_rating', 'type=number' );
+        $similar_movie_titles = rwmb_meta( 'siml_similar-movies', 'type=select&multiple=true' );
+
+        foreach ( $similar_movie_titles as $movie_title ) {
+            echo($movie_title);
+        }
+        ?>
+
+
 
         <div id="content" class="grid_9">
         <div class="movie-info-container">
             <div class="movie-info-image">
-
-
+                <!-- Display poster -->
                 <?php
-                // Output image
-                $images = rwmb_meta( 'siml_movie_poster', 'type=image' );
-
-                foreach ( $images as $image )
+                foreach ( $images_poster as $image )
                 {
-                    echo "<img class\"no-margin\" src='{$image['url']}' width='{$image['width']}' height='{$image['height']}' alt='{$image['alt']}' />";
+                echo "<img class\"no-margin\" src='{$image['url']}'  alt='{$image['alt']}' />";
                 }
-
                 ?>
-                <img class="no-margin" src="images/PosterTwinPeaks.jpg" alt="Poster for the Twin Peaks Series">
 
                 <h3 class="text-overlay visible-mobile"><?php the_title() ?></h3>
             </div>
@@ -42,6 +52,8 @@
 
                 <h1 class="visible-desktop"><?php the_title() ?></h1>
                 <hr class="horizontal-separator no-margin">
+
+
 
                 <div class="rating">
                     <img src="images/RatingStar.png" alt="A star-shaped polygon with the rating of the movie inside">

@@ -80,9 +80,48 @@
           <file leaf-file-name="single-movie.php" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/wp-content/themes/itufilm/single-movie.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.3170189" vertical-offset="0" max-vertical-offset="3765">
-                  <caret line="19" column="50" selection-start-line="19" selection-start-column="50" selection-end-line="19" selection-end-column="50" />
-                  <folding />
+                <state vertical-scroll-proportion="0.3003337" vertical-offset="0" max-vertical-offset="3945">
+                  <caret line="18" column="31" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
+                  <folding>
+                    <marker date="1429129077000" expanded="true" signature="772:11931" placeholder="..." />
+                    <marker date="1429129077000" expanded="true" signature="815:3319" placeholder="..." />
+                    <marker date="1429129077000" expanded="true" signature="858:1226" placeholder="..." />
+                    <marker date="1429129077000" expanded="true" signature="1404:1515" placeholder="..." />
+                    <marker date="1429129077000" expanded="true" signature="1643:1953" placeholder="..." />
+                    <marker date="1429129077000" expanded="true" signature="2027:3026" placeholder="..." />
+                    <marker date="1429129077000" expanded="true" signature="2198:2418" placeholder="..." />
+                    <marker date="1429129077000" expanded="true" signature="2465:2936" placeholder="..." />
+                    <marker date="1429129077000" expanded="true" signature="2490:2913" placeholder="..." />
+                    <marker date="1429129077000" expanded="true" signature="3147:3258" placeholder="..." />
+                    <marker date="1429129077000" expanded="true" signature="3398:9610" placeholder="..." />
+                    <marker date="1429129077000" expanded="true" signature="3529:3841" placeholder="..." />
+                    <marker date="1429129077000" expanded="true" signature="3924:9595" placeholder="..." />
+                    <marker date="1429129077000" expanded="true" signature="3975:5360" placeholder="..." />
+                    <marker date="1429129077000" expanded="true" signature="4172:4341" placeholder="..." />
+                    <marker date="1429129077000" expanded="true" signature="4373:4558" placeholder="..." />
+                    <marker date="1429129077000" expanded="true" signature="4590:4750" placeholder="..." />
+                    <marker date="1429129077000" expanded="true" signature="4782:4941" placeholder="..." />
+                    <marker date="1429129077000" expanded="true" signature="4973:5143" placeholder="..." />
+                    <marker date="1429129077000" expanded="true" signature="5175:5337" placeholder="..." />
+                    <marker date="1429129077000" expanded="true" signature="5618:6255" placeholder="..." />
+                    <marker date="1429129077000" expanded="true" signature="5793:6232" placeholder="..." />
+                    <marker date="1429129077000" expanded="true" signature="5936:6205" placeholder="..." />
+                    <marker date="1429129077000" expanded="true" signature="6333:6955" placeholder="..." />
+                    <marker date="1429129077000" expanded="true" signature="6496:6932" placeholder="..." />
+                    <marker date="1429129077000" expanded="true" signature="6653:6905" placeholder="..." />
+                    <marker date="1429129077000" expanded="true" signature="7033:7570" placeholder="..." />
+                    <marker date="1429129077000" expanded="true" signature="7180:7547" placeholder="..." />
+                    <marker date="1429129077000" expanded="true" signature="7323:7520" placeholder="..." />
+                    <marker date="1429129077000" expanded="true" signature="7648:8197" placeholder="..." />
+                    <marker date="1429129077000" expanded="true" signature="7795:8174" placeholder="..." />
+                    <marker date="1429129077000" expanded="true" signature="7931:8147" placeholder="..." />
+                    <marker date="1429129077000" expanded="true" signature="8275:8898" placeholder="..." />
+                    <marker date="1429129077000" expanded="true" signature="8433:8875" placeholder="..." />
+                    <marker date="1429129077000" expanded="true" signature="8584:8848" placeholder="..." />
+                    <marker date="1429129077000" expanded="true" signature="8976:9576" placeholder="..." />
+                    <marker date="1429129077000" expanded="true" signature="9126:9553" placeholder="..." />
+                    <marker date="1429129077000" expanded="true" signature="9273:9526" placeholder="..." />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -121,21 +160,21 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="functions.php" pinned="false" current-in-tab="false">
+          <file leaf-file-name="functions.php" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/wp-content/themes/itufilm/functions.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-14.958333" vertical-offset="1351" max-vertical-offset="4170">
-                  <caret line="114" column="21" selection-start-line="114" selection-start-column="21" selection-end-line="114" selection-end-column="21" />
+                <state vertical-scroll-proportion="0.46607342" vertical-offset="3856" max-vertical-offset="5205">
+                  <caret line="285" column="41" selection-start-line="285" selection-start-column="41" selection-end-line="285" selection-end-column="41" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="styles-mobile.css" pinned="false" current-in-tab="true">
+          <file leaf-file-name="styles-mobile.css" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/wp-content/themes/itufilm/css/styles-mobile.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.66964287" vertical-offset="345" max-vertical-offset="7080">
-                  <caret line="63" column="1" selection-start-line="63" selection-start-column="1" selection-end-line="63" selection-end-column="1" />
+                <state vertical-scroll-proportion="15.0" vertical-offset="720" max-vertical-offset="7080">
+                  <caret line="21" column="38" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
                   <folding />
                 </state>
               </provider>
@@ -161,13 +200,13 @@
         <option value="$PROJECT_DIR$/wp-content/themes/itufilm/footer.php" />
         <option value="$PROJECT_DIR$/wp-content/themes/itufilm/page-home.php" />
         <option value="$PROJECT_DIR$/wp-content/themes/itufilm/page-movies.php" />
-        <option value="$PROJECT_DIR$/wp-content/themes/itufilm/functions.php" />
         <option value="$PROJECT_DIR$/wp-content/themes/itufilm/single-event.php" />
         <option value="$PROJECT_DIR$/wp-content/themes/itufilm/page-movie.php" />
         <option value="$PROJECT_DIR$/wp-content/themes/itufilm/single-news.php" />
         <option value="$PROJECT_DIR$/wp-content/themes/itufilm/single.php" />
-        <option value="$PROJECT_DIR$/wp-content/themes/itufilm/single-movie.php" />
         <option value="$PROJECT_DIR$/wp-content/themes/itufilm/css/styles-mobile.css" />
+        <option value="$PROJECT_DIR$/wp-content/themes/itufilm/single-movie.php" />
+        <option value="$PROJECT_DIR$/wp-content/themes/itufilm/functions.php" />
       </list>
     </option>
   </component>
@@ -831,14 +870,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/itufilm/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.625" vertical-offset="0" max-vertical-offset="225">
-          <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/wp-includes/query.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.34149054" vertical-offset="1103" max-vertical-offset="70455">
@@ -853,34 +884,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/itufilm/single-news.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="899">
-          <caret line="0" column="16" selection-start-line="0" selection-start-column="16" selection-end-line="0" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/itufilm/single.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="899">
           <caret line="0" column="11" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/itufilm/single-movie.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3170189" vertical-offset="0" max-vertical-offset="3765">
-          <caret line="19" column="50" selection-start-line="19" selection-start-column="50" selection-end-line="19" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/itufilm/functions.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.958333" vertical-offset="1351" max-vertical-offset="4170">
-          <caret line="114" column="21" selection-start-line="114" selection-start-column="21" selection-end-line="114" selection-end-column="21" />
           <folding />
         </state>
       </provider>
@@ -895,8 +902,79 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/itufilm/css/styles-mobile.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.66964287" vertical-offset="345" max-vertical-offset="7080">
-          <caret line="63" column="1" selection-start-line="63" selection-start-column="1" selection-end-line="63" selection-end-column="1" />
+        <state vertical-scroll-proportion="15.0" vertical-offset="720" max-vertical-offset="7080">
+          <caret line="21" column="38" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/itufilm/single-news.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="899">
+          <caret line="0" column="16" selection-start-line="0" selection-start-column="16" selection-end-line="0" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/itufilm/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.625" vertical-offset="0" max-vertical-offset="225">
+          <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/itufilm/single-movie.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3003337" vertical-offset="0" max-vertical-offset="3945">
+          <caret line="18" column="31" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
+          <folding>
+            <marker date="1429129077000" expanded="true" signature="772:11931" placeholder="..." />
+            <marker date="1429129077000" expanded="true" signature="815:3319" placeholder="..." />
+            <marker date="1429129077000" expanded="true" signature="858:1226" placeholder="..." />
+            <marker date="1429129077000" expanded="true" signature="1404:1515" placeholder="..." />
+            <marker date="1429129077000" expanded="true" signature="1643:1953" placeholder="..." />
+            <marker date="1429129077000" expanded="true" signature="2027:3026" placeholder="..." />
+            <marker date="1429129077000" expanded="true" signature="2198:2418" placeholder="..." />
+            <marker date="1429129077000" expanded="true" signature="2465:2936" placeholder="..." />
+            <marker date="1429129077000" expanded="true" signature="2490:2913" placeholder="..." />
+            <marker date="1429129077000" expanded="true" signature="3147:3258" placeholder="..." />
+            <marker date="1429129077000" expanded="true" signature="3398:9610" placeholder="..." />
+            <marker date="1429129077000" expanded="true" signature="3529:3841" placeholder="..." />
+            <marker date="1429129077000" expanded="true" signature="3924:9595" placeholder="..." />
+            <marker date="1429129077000" expanded="true" signature="3975:5360" placeholder="..." />
+            <marker date="1429129077000" expanded="true" signature="4172:4341" placeholder="..." />
+            <marker date="1429129077000" expanded="true" signature="4373:4558" placeholder="..." />
+            <marker date="1429129077000" expanded="true" signature="4590:4750" placeholder="..." />
+            <marker date="1429129077000" expanded="true" signature="4782:4941" placeholder="..." />
+            <marker date="1429129077000" expanded="true" signature="4973:5143" placeholder="..." />
+            <marker date="1429129077000" expanded="true" signature="5175:5337" placeholder="..." />
+            <marker date="1429129077000" expanded="true" signature="5618:6255" placeholder="..." />
+            <marker date="1429129077000" expanded="true" signature="5793:6232" placeholder="..." />
+            <marker date="1429129077000" expanded="true" signature="5936:6205" placeholder="..." />
+            <marker date="1429129077000" expanded="true" signature="6333:6955" placeholder="..." />
+            <marker date="1429129077000" expanded="true" signature="6496:6932" placeholder="..." />
+            <marker date="1429129077000" expanded="true" signature="6653:6905" placeholder="..." />
+            <marker date="1429129077000" expanded="true" signature="7033:7570" placeholder="..." />
+            <marker date="1429129077000" expanded="true" signature="7180:7547" placeholder="..." />
+            <marker date="1429129077000" expanded="true" signature="7323:7520" placeholder="..." />
+            <marker date="1429129077000" expanded="true" signature="7648:8197" placeholder="..." />
+            <marker date="1429129077000" expanded="true" signature="7795:8174" placeholder="..." />
+            <marker date="1429129077000" expanded="true" signature="7931:8147" placeholder="..." />
+            <marker date="1429129077000" expanded="true" signature="8275:8898" placeholder="..." />
+            <marker date="1429129077000" expanded="true" signature="8433:8875" placeholder="..." />
+            <marker date="1429129077000" expanded="true" signature="8584:8848" placeholder="..." />
+            <marker date="1429129077000" expanded="true" signature="8976:9576" placeholder="..." />
+            <marker date="1429129077000" expanded="true" signature="9126:9553" placeholder="..." />
+            <marker date="1429129077000" expanded="true" signature="9273:9526" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/itufilm/functions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.46607342" vertical-offset="3856" max-vertical-offset="5205">
+          <caret line="285" column="41" selection-start-line="285" selection-start-column="41" selection-end-line="285" selection-end-column="41" />
           <folding />
         </state>
       </provider>
