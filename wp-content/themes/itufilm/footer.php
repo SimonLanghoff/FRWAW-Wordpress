@@ -1,4 +1,8 @@
 <div class="clear"></div>
+
+<!-- Wrap the main content container. -->
+</div>
+
 <!-- Simple Footer -->
 <footer class="text-center">
     <p>

@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 <?php get_sidebar(); ?>
 
-    <div id="content" class="grid_9">
+    <div id="content" class="grid_9" role="main">
         <div class="news-item-main">
             <article>
                 <img src="images/Event%20Poster%20Her.jpg" width="600">
@@ -87,7 +87,7 @@
 <!---->
 <!--<section id="content" role="main">-->
 <?php //if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-<!--<article id="post---><?php //the_ID(); ?><!--" --><?php //post_class(); ?><!-->-->
+<!--<article id="post---><?php //the_ID(); ?><!--" --><?php //post_class(); ?><!--> <!-->
 <!--<header class="header">-->
 <!--<h1 class="entry-title">--><?php //the_title(); ?><!--</h1> --><?php //edit_post_link(); ?>
 <!--</header>-->

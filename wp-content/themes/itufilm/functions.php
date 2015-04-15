@@ -105,10 +105,12 @@ function itufilm_comments_number($count)
 
 add_theme_support('post-thumbnails');
 
-add_filter('rwmb_meta_boxes', 'show_me_the_picture');
+add_filter('rwmb_meta_boxes', 'add_movie_meta');
+add_filter('rwmb_meta_boxes', 'add_news_info');
+add_filter('rwmb_meta_boxes', 'add_event_info');
 
-function show_me_the_picture ($args) {
-    $prefix = 'yiha_';
+function add_movie_meta ($args) {
+    $prefix = 'siml_';
 
     $args[] = array (
         'id' => 'movie_details',
@@ -116,36 +118,148 @@ function show_me_the_picture ($args) {
         'pages' => array('movie'),
         'context' => 'normal',
         'priority' => 'high',
+
         'fields' => array(
             array(
                 'id' => $prefix . 'movie_poster',
-                'name' => 'Image',
+                'name' => 'Movie Poster',
                 'type' => 'image_advanced'
             ),
             array(
-                'id' => $prefix . 'movie_banner',
-                'name' => 'Banner',
+                'id' => $prefix . 'rating',
+                'name' => 'Movie Rating',
+                'type' => 'number'
+            ),
+            array(
+                'id' => $prefix . 'recommendations',
+                'name' => 'Recommendations',
+                'type' => 'number'
+            ),
+            array(
+                //            list of similar movie id's
+                'id' => $prefix . 'similar-movies',
+                'name' => 'Similar Movies',
+                'type' => 'select_advanced',
+                'options' => array(
+                    'movie1' => __( 'blue velvet', 'similar-movie' ),
+                    'movie2' => __( 'twin peaks', 'similar-movie' ),
+                    'movie3' => __( 'eraser head', 'similar-movie' ),
+                    'movie4' => __( 'x-files', 'similar-movie' ),
+                    'movie5' => __( 'mulholland drive', 'similar-movie' ),
+                    'movie6' => __( 'lost highway', 'similar-movie' ),
+                ),
+
+                'multiple'    => true,
+                'std'         => 'blue velvet',
+                'placeholder' => __( 'Select similar movies', 'similar-movie' ),
+
+            ),
+            array(
+                'id' => $prefix . 'type',
+                'name' => 'Type',
+                'type' => 'text'
+            ),
+            array(
+                'id' => $prefix . 'genre',
+                'name' => 'Genre',
+                'type' => 'text'
+            ),
+            array(
+                'id' => $prefix . 'playtime',
+                'name' => 'Playtime',
+                'type' => 'text'
+            ),
+            array(
+                'id' => $prefix . 'creators',
+                'name' => 'Creators',
+                'type' => 'text'
+            ),
+            array(
+                'id' => $prefix . 'stars',
+                'name' => 'Starring',
+                'type' => 'text'
+            ),
+            array(
+                'id' => $prefix . 'moods',
+                'name' => 'Moods',
+                'type' => 'text'
+            ),
+        )
+    );
+
+    return $args;
+}
+
+// Meta box for news items
+function add_news_info ($args) {
+    $prefix = 'siml_';
+
+    $args[] = array (
+        'id' => 'news_item',
+        'title' => 'News Item',
+        'pages' => array('news'),
+        'context' => 'normal',
+        'priority' => 'high',
+
+        'fields' => array(
+            array(
+                'id' => $prefix . 'news_picture',
+                'name' => 'Picture',
                 'type' => 'image_advanced'
             ),
             array(
-                'id' => $prefix . 'start_date',
-                'name' => 'Start Date',
-                'type' => 'date'
-            ),
-            array(
-                'id' => $prefix . 'end_date',
-                'name' => 'End Date',
-                'type' => 'date'
-            ),
-            array(
-                'id' => $prefix . 'time_slots',
-                'name' => 'Time slots',
+                // Should link to a user
+                'id' => $prefix . 'news_author',
+                'name' => 'Author',
                 'type' => 'text'
             ),
             array(
-                'id' => $prefix . 'category',
-                'name' => 'Category',
+                'id' => $prefix . 'news_date',
+                'name' => 'Date',
+                'type' => 'datetime',
+
+                'js_options' => array(
+                    'showTimepicker' => false,
+                ),
+            ),
+        )
+    );
+
+    return $args;
+}
+
+// Meta box for the next event
+function add_event_info ($args) {
+    $prefix = 'siml_';
+
+    $args[] = array (
+        'id' => 'event_next',
+        'title' => 'Next Event',
+        'pages' => array('event'),
+        'context' => 'normal',
+        'priority' => 'high',
+
+        'fields' => array(
+            array(
+                'id' => $prefix . 'event_picture',
+                'name' => 'Picture',
+                'type' => 'image_advanced'
+            ),
+            array(
+                // Should link to a user
+                'id' => $prefix . 'location',
+                'name' => 'Location',
                 'type' => 'text'
+            ),
+            array(
+                'id' => $prefix . 'event_time',
+                'name' => 'Date',
+                'type' => 'datetime',
+
+                'js_options' => array(
+                    'showTimepicker' => true,
+                    'stepMinute'     => 15
+                ),
             ),
         )
     );
