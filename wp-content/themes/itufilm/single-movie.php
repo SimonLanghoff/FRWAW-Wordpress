@@ -13,11 +13,8 @@
         // Get the rating
         $rating = rwmb_meta( 'siml_rating', 'type=number' );
         $recommendations_number = rwmb_meta( 'siml_rating', 'type=number' );
-        $similar_movie_titles = rwmb_meta( 'siml_similar-movies', 'type=select&multiple=true' );
+        $similar_movie_ids = rwmb_meta( 'siml_similar-movies', 'type=select&multiple=true' );
 
-        foreach ( $similar_movie_titles as $movie_title ) {
-            echo($movie_title);
-        }
         ?>
 
 
@@ -95,6 +92,47 @@
             <div id="collapse-similar-movies" class="collapse in similar-movies">
                 <div class="image-grid no-margin">
                     <h2 class="visible-desktop">Similar Movies</h2>
+
+                    <!-- Add posters -->
+                    <?php
+                    foreach ( $similar_movie_ids as $movie_id ) {
+                        // Get the correct movie title which can be used to fetch the posts:
+                        // TODO:
+                        $movie_title = get_movie_info($movie_id);
+
+
+//                        $args = array(
+//                            'post_title_like' => $movie_title
+//                        );
+//
+//                        $result = new WP_Query( $args );
+//
+//                        if ($result -> have_posts()){
+//                            while ($result->have_posts()){
+//                                $result -> the_post();
+//                                the_title();
+//                                the_content();
+//
+//                                var_dump($result->the_post());
+//                            }
+//
+//                        }
+//                        wp_reset_query();
+
+
+                        // TODO: Change the global post stuff?
+                        // Now we got the movie post for each similar movie, so get the poster image.
+                        $similar_movie_posters = rwmb_meta( 'siml_movie_poster', 'type=image' );
+                        foreach ( $similar_movie_posters as $movie_poster )
+                        {
+                            //$link = the_permalink($movie_post -> ID);
+                        // echo "<a href='$the_permalink($movie_post -> ID)'> <img class\"no-margin\" src='{$image['url']}'  alt='{$image['alt']}' /> </a> ";
+                            // echo "<a href='$link' title='{$movie_poster['title']}'><img src='{$movie_poster['url']}' alt='{$movie_poster['alt']}' /></a>";
+                        }
+
+                        // TODO: reset query???
+                    }
+                    ?>
                     <!-- Added div to horizontally align picture grid when viewed on mobile. -->
                     <a href="">
                         <img class="movie-thumbnail movie-1" src="images/Movies/Blue%20Velvet%20Poster.jpg" alt="Movie Poster for Blue Velvet">
@@ -183,7 +221,7 @@
 
 <!--        Add comments here -->
 
-
+        <?php comments_template(); ?>
 <!--        <div class="user-comments-container">-->
 <!--            <div class="user-comments">-->
 <!--                <h2 class="visible-desktop">Comments</h2>-->
@@ -221,6 +259,7 @@
 <!--                </div>-->
 <!--            </div>-->
 <!--        </div>-->
+
 
     <?php endwhile; ?>
 <?php else : ?>

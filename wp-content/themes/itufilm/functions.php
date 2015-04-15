@@ -281,38 +281,53 @@ function title_like_posts_where( $where, &$wp_query ) {
 // Simple function used to get the correct movie based on its id.
 // This should really be done by matching together the custom post type meta box with the corresponding
 // movie, but this will do for simple showcasing of the functionality.
-function get_movie_info($movie_title){
-    $args = array(
-        'post_title_like' => $movie_title
-    );
-    // TODO: do new here so we don't have to clear.
-    return new WP_Query( $args );
+function get_movie_info($movie_id){
+    $movie_title = null;
+    switch($movie_id){
+        case "movie1":
+            $movie_title = null;
+            break;
+        case "movie2":
+            $movie_title = "twin-peaks-fire-walk-with-me-1992";
+            break;
+        case "movie3":
+            // TODO
+            break;
+        case "movie4":
+            // TODO
+            break;
+        case "movie5":
+            // TODO
+            break;
+        case "movie6":
+            // TODO:
+            break;
+        case "movie7":
+            $movie_title = "twin-peaks-1990";
+        default:
+            echo("Movie not recognized!");
+            break;
+    }
 
+    return $movie_title;
+
+//    $args = array(
+//        'post_title_like' => $movie_title
+//    );
+//    // TODO: do new here so we don't have to clear.
+//    $result = new WP_Query( $args );
 //
-//    switch($movie_title){
-//        case "movie1":
-//            echo("movie1");
 //
-//            break;
-//        case "movie2":
-//            echo("movie2");
-//            break;
-//        case "movie3":
-//            echo("movie3");
-//            break;
-//        case "movie4":
-//            echo("movie4");
-//            break;
-//        case "movie5":
-//            echo("movie5");
-//            break;
-//        case "movie6":
-//            echo("movie6");
-//            break;
-//        default:
-//            echo("Movie not recognized!");
-//            break;
+//    if ($result -> have_posts()){
+//        while ($result->have_posts()){
+//            var_dump($result->the_post());
+//        }
+//
 //    }
+//    wp_reset_query();
+//
+//    return $result;
+
 //
 //    $args = array(
 //        'post_type' => 'my_post_type',
