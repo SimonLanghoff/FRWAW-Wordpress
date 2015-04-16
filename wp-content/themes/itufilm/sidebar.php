@@ -21,7 +21,7 @@
         $event = $result[0];
 
 
-        $event_posters = rwmb_meta( 'siml_event_picture', 'type=image', $event -> ID );
+        $event_posters = rwmb_meta( 'siml_event_picture', 'type=image&size=143x212', $event -> ID );
         $event_poster = reset($event_posters); // Rewind and get the first element of the array (there should only be one)
         $event_time = rwmb_meta('siml_event_time', 'type=datetime', $event -> ID );
         $event_location = rwmb_meta('siml_event_location', 'type=text', $event -> ID );

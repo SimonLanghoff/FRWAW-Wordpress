@@ -20,7 +20,7 @@
     <?php foreach($news_main as $news_item_main) : ?>
         <?php
         // Fetch all the meta data for each news and create the HTML markup.
-        $news_image_main = rwmb_meta( 'siml_main_news_picture', 'type=image', $news_item_main -> ID );
+        $news_image_main = rwmb_meta( 'siml_main_news_picture', 'type=image&size=700x259', $news_item_main -> ID );
         $news_image_main = reset($news_image_main); // There is only one element for each news, just get it.
         $author_main = rwmb_meta( 'siml_news_author', 'type=text', $news_item_main -> ID );
         $date_main = rwmb_meta( 'siml_main_news_date', 'type=datetime', $news_item_main -> ID );
@@ -72,7 +72,7 @@
         <?php foreach($news as $news_item) : ?>
         <?php
             // Fetch all the meta data for each news and create the HTML markup.
-            $news_image = rwmb_meta( 'siml_news_picture', 'type=image', $news_item -> ID );
+            $news_image = rwmb_meta( 'siml_news_picture', 'type=image&size=200x120', $news_item -> ID );
             $news_image = reset($news_image); // There is only one element for each news, just get it.
             $author = rwmb_meta( 'siml_news_author', 'type=text', $news_item -> ID );
             $date = rwmb_meta( 'siml_news_date', 'type=datetime', $news_item -> ID );

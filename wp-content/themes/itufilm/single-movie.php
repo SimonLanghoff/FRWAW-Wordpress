@@ -9,7 +9,7 @@
     <?php
 
     // Output poster image
-    $images = rwmb_meta( 'siml_movie_poster', 'type=image' );
+    $images = rwmb_meta( 'siml_movie_poster', 'type=image&size=130x13' );
     $movie_poster_high = current($images); // Get the first element (high res poster)
 
     // Get the rating
@@ -36,7 +36,7 @@
         <div class="movie-info-image">
             <!-- Display poster -->
             <?php
-                echo "<img class\"no-margin\" src='{$movie_poster_high['url']}' width='{$movie_poster_high['width']}' height='{$movie_poster_high['height']}'  alt='{$movie_poster_high['alt']}' />";
+                echo "<img class\"no-margin\" src='{$movie_poster_high['url']}'  alt='{$movie_poster_high['alt']}' />";
             ?>
 
             <h3 class="text-overlay visible-mobile"><?php the_title() ?></h3>
@@ -114,7 +114,7 @@
 
                     $id = $movie_info -> ID;
                     // Output poster image
-                    $similar_movie_poster = rwmb_meta( 'siml_movie_poster', 'type=image', $id);
+                    $similar_movie_poster = rwmb_meta( 'siml_movie_poster', 'type=image&size=76x113', $id);
                     $similar_movie_poster_low = next($similar_movie_poster); // get second item (low-res poster)
                 ?>
 
@@ -142,7 +142,7 @@
                 $id = $movie_info -> ID;
                 // Output poster image
                 // TODO: get hires
-                $similar_movie_poster = rwmb_meta( 'siml_movie_poster', 'type=image', $id);
+                $similar_movie_poster = rwmb_meta( 'siml_movie_poster', 'type=image&size=205', $id);
                 $similar_movie_poster_high = current($similar_movie_poster); // get first element (hi-res)
 
 
