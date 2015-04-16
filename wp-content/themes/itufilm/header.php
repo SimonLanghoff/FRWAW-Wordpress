@@ -30,4 +30,4 @@
     </header>
 
 <!--    Wrap the main content. -->
-    <div id="wrapper">
+    <div class="wrapper">
