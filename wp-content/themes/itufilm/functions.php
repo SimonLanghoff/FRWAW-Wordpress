@@ -403,6 +403,8 @@ function get_movie_info($movie_id){
 
     // Get all the news items
     $movie_info = get_posts($next_event_query_args);
+    // Movie is wrapped in an array, get the first item.
+    $movie_info = reset($movie_info);
 
 //    $args = array(
 //        'post_type' => 'movie',

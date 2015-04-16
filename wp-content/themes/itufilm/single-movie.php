@@ -105,6 +105,7 @@
 
                 <!-- Add posters -->
                 <?php
+                $count = 1;
                 foreach ( $similar_movie_ids as $movie_id ) {
                     // Get the correct movie title which can be used to fetch the posts:
                     $movie_info = get_movie_info($movie_id);
@@ -123,9 +124,35 @@
 ////                         echo "<a href='$link' title='{$movie_poster['title']}'><img src='{$movie_poster['url']}' alt='{$movie_poster['alt']}' /></a>";
 //                    }
 
+//                        var_dump($movie_info);
+                $id = $movie_info -> ID;
+                // Output poster image
+                $similar_movie_poster = rwmb_meta( 'siml_movie_poster', 'type=image', $id);
+                $similar_movie_poster = reset($similar_movie_poster); // unwrap the array
+
+                // Get the rating
+                $rating = rwmb_meta( 'siml_rating', 'type=number', $id);
+                $recommendations_number = rwmb_meta( 'siml_rating', 'type=number', $id);
+                $similar_movie_ids = rwmb_meta( 'siml_similar-movies', 'type=select&multiple=true', $id );
+                $type = rwmb_meta( 'siml_type', 'type=text&multiple=true', $id );
+                $genre = rwmb_meta( 'siml_genre', 'type=text&multiple=true', $id );
+                $playtime = rwmb_meta( 'siml_playtime', 'type=text&multiple=true', $id );
+                $creators = rwmb_meta( 'siml_creators', 'type=text&multiple=true', $id );
+                $stars = rwmb_meta( 'siml_stars', 'type=text&multiple=true', $id );
+                $moods = rwmb_meta( 'siml_moods', 'type=text&multiple=true', $id );
+
+//                        var_dump($similar_movie_poster);
+                $link = get_permalink($id);
+//                        var_dump($link = the_permalink($result -> ID));
+                echo "<a href='$link' title='{$similar_movie_poster['title']}'><img class=\"movie-thumbnail movie-".$count."\" src='{$similar_movie_poster['url']}' alt='{$similar_movie_poster['alt']}' /></a>";
+
+                $count++;
+
 
                 }
                 ?>
+
+
                 <!-- Added div to horizontally align picture grid when viewed on mobile. -->
                 <a href="">
                     <img class="movie-thumbnail movie-1" src="images/Movies/Blue%20Velvet%20Poster.jpg" alt="Movie Poster for Blue Velvet">
