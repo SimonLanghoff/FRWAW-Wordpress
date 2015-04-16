@@ -20,13 +20,12 @@
         $result = get_posts($next_event_query_args);
         $event = $result[0];
 
+
+        $event_posters = rwmb_meta( 'siml_event_picture', 'type=image', $event -> ID );
+        $event_poster = reset($event_posters); // Rewind and get the first element of the array (there should only be one)
         $event_time = rwmb_meta('siml_event_time', 'type=datetime', $event -> ID );
-        $event_location = rwmb_meta('siml_location', 'type=text', $event -> ID );
-        var_dump($event_time);
-        var_dump($event_location);
-
-        var_dump($event);
-
+        $event_location = rwmb_meta('siml_event_location', 'type=text', $event -> ID );
+        $event_time = strtotime($event_time);
         ?>
 
 
@@ -37,15 +36,13 @@
                 Next Screening
             </h4>
             <figure class="no-margin">
-                <img src="images/Her%20Poster.jpg">
-                <figcaption>"Her"</figcaption>
+                <?php
+                 echo "<img src='{$event_poster['url']}' width='{$event_poster['width']}' height='{$event_poster['height']}'  alt='{$event_poster['alt']}' />";
+                ?>
+                <figcaption><?php echo ($event -> post_title); ?></figcaption>
             </figure>
             <p>
-
-                <?php echo(date("j F " , $event_meta) . '<br/>' . date("H:i ", $event_meta) . "in" . $event_location);  ?>
-
-                27th February<br/>
-                16:00 in AUD 1
+                <?php echo(date("j F " , $event_time) . '<br/>' . date("H:i ", $event_time) . "in " . $event_location);  ?>
             </p>
         </div>
 

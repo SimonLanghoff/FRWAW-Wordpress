@@ -30,7 +30,7 @@
           <file leaf-file-name="header.php" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/wp-content/themes/itufilm/header.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="465" max-vertical-offset="570">
+                <state vertical-scroll-proportion="-0.0" vertical-offset="465" max-vertical-offset="570">
                   <caret line="31" column="31" selection-start-line="31" selection-start-column="31" selection-end-line="31" selection-end-column="31" />
                   <folding />
                 </state>
@@ -50,8 +50,8 @@
           <file leaf-file-name="sidebar.php" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/wp-content/themes/itufilm/sidebar.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.3337041" vertical-offset="45" max-vertical-offset="1395">
-                  <caret line="23" column="42" selection-start-line="23" selection-start-column="42" selection-end-line="23" selection-end-column="42" />
+                <state vertical-scroll-proportion="0.2502781" vertical-offset="0" max-vertical-offset="1350">
+                  <caret line="15" column="10" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
                   <folding />
                 </state>
               </provider>
@@ -70,8 +70,8 @@
           <file leaf-file-name="single-movie.php" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/wp-content/themes/itufilm/single-movie.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-5.2941175" vertical-offset="15" max-vertical-offset="4305">
-                  <caret line="19" column="52" selection-start-line="19" selection-start-column="52" selection-end-line="19" selection-end-column="52" />
+                <state vertical-scroll-proportion="-8.529411" vertical-offset="135" max-vertical-offset="4305">
+                  <caret line="38" column="145" selection-start-line="38" selection-start-column="11" selection-end-line="38" selection-end-column="145" />
                   <folding>
                     <marker date="1429188196000" expanded="true" signature="3018:3462" placeholder="..." />
                     <marker date="1429188196000" expanded="true" signature="3039:3443" placeholder="..." />
@@ -156,8 +156,8 @@
           <file leaf-file-name="functions.php" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/wp-content/themes/itufilm/functions.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.5828698" vertical-offset="3271" max-vertical-offset="5790">
-                  <caret line="253" column="35" selection-start-line="253" selection-start-column="35" selection-end-line="253" selection-end-column="35" />
+                <state vertical-scroll-proportion="0.6496107" vertical-offset="3271" max-vertical-offset="5790">
+                  <caret line="257" column="18" selection-start-line="257" selection-start-column="18" selection-end-line="257" selection-end-column="18" />
                   <folding />
                 </state>
               </provider>
@@ -199,8 +199,8 @@
         <option value="$PROJECT_DIR$/wp-content/themes/itufilm/comments.php" />
         <option value="$PROJECT_DIR$/wp-content/themes/itufilm/page.php" />
         <option value="$PROJECT_DIR$/wp-content/themes/itufilm/single-movie.php" />
-        <option value="$PROJECT_DIR$/wp-content/themes/itufilm/sidebar.php" />
         <option value="$PROJECT_DIR$/wp-content/themes/itufilm/functions.php" />
+        <option value="$PROJECT_DIR$/wp-content/themes/itufilm/sidebar.php" />
       </list>
     </option>
   </component>
@@ -798,13 +798,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/itufilm/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="697">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/itufilm/tag.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.75" vertical-offset="0" max-vertical-offset="255">
@@ -985,8 +978,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/itufilm/single-movie.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.2941175" vertical-offset="15" max-vertical-offset="4305">
-          <caret line="19" column="52" selection-start-line="19" selection-start-column="52" selection-end-line="19" selection-end-column="52" />
+        <state vertical-scroll-proportion="-8.529411" vertical-offset="135" max-vertical-offset="4305">
+          <caret line="38" column="145" selection-start-line="38" selection-start-column="11" selection-end-line="38" selection-end-column="145" />
           <folding>
             <marker date="1429188196000" expanded="true" signature="3018:3462" placeholder="..." />
             <marker date="1429188196000" expanded="true" signature="3039:3443" placeholder="..." />
@@ -1023,18 +1016,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wp-content/themes/itufilm/sidebar.php">
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/itufilm/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3337041" vertical-offset="45" max-vertical-offset="1395">
-          <caret line="23" column="42" selection-start-line="23" selection-start-column="42" selection-end-line="23" selection-end-column="42" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="923">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/wp-content/themes/itufilm/functions.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5828698" vertical-offset="3271" max-vertical-offset="5790">
-          <caret line="253" column="35" selection-start-line="253" selection-start-column="35" selection-end-line="253" selection-end-column="35" />
+        <state vertical-scroll-proportion="0.6496107" vertical-offset="3271" max-vertical-offset="5790">
+          <caret line="257" column="18" selection-start-line="257" selection-start-column="18" selection-end-line="257" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wp-content/themes/itufilm/sidebar.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2502781" vertical-offset="0" max-vertical-offset="1350">
+          <caret line="15" column="10" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
           <folding />
         </state>
       </provider>

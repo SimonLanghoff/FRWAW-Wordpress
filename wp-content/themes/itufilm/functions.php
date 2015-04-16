@@ -251,7 +251,7 @@ function add_event_info ($args) {
             ),
             array(
                 // Should link to a user
-                'id' => $prefix . 'location',
+                'id' => $prefix . 'event_location',
                 'name' => 'Location',
                 'type' => 'text'
             ),
