@@ -325,13 +325,13 @@ function get_movie_info($movie_id){
             $movie_title = "eraser-head-1977";
             break;
         case "movie4":
-            // TODO
+            $movie_title = "the-x-files-1993-2002";
             break;
         case "movie5":
-            // TODO
+            $movie_title = "mulholland-drive-2001";
             break;
         case "movie6":
-            // TODO:
+            $movie_title = "lost-highway-1997";
             break;
         case "movie7":
             $movie_title = "twin-peaks-1990";
@@ -340,7 +340,21 @@ function get_movie_info($movie_id){
             break;
     }
 
-    return $movie_title;
+    global $post;
+    // Create new Query to fetch data.
+    $args = array(
+        'post_type' => 'Movie',
+//        'post_title_like' => $movie_title
+        'p => $movie_title'
+    );
+
+    $result = new WP_Query( $args );
+
+    if ($result -> have_posts()){
+        $result -> the_post();
+    }
+
+    return $result;
 
 //    $args = array(
 //        'post_title_like' => $movie_title
