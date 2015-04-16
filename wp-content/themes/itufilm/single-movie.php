@@ -7,6 +7,7 @@
     <?php the_post();?>
     <!-- Fetch all the needed meta data for each movie.  -->
     <?php
+
     // Output poster image
     $images_poster = rwmb_meta( 'siml_movie_poster', 'type=image' );
 
@@ -36,7 +37,7 @@
             <?php
             foreach ( $images_poster as $image )
             {
-            echo "<img class\"no-margin\" src='{$image['url']}' width='{$image['width']}' height='{$image['height']}'  alt='{$image['alt']}' />";
+                echo "<img class\"no-margin\" src='{$image['url']}' width='{$image['width']}' height='{$image['height']}'  alt='{$image['alt']}' />";
             }
             ?>
 

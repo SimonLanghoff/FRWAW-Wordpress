@@ -1,40 +1,98 @@
 <?php get_header(); ?>
 <?php get_sidebar(); ?>
 
+<?php if ( have_posts()) :?>
+
+    <?php
+    // Query args for fetching the news items.
+    $next_event_query_args = array(
+        'post_type'			=> 'main_news_item',
+        'posts_per_page'	=> 1, // only get one item
+        'meta_key'			=> 'siml_main_news_date',
+        'orderby'			=> 'meta_value',
+        'order'				=> 'DESC'
+    );
+
+
+    // Get all the news items
+    $news_main = get_posts($next_event_query_args);
+    ?>
+    <?php foreach($news_main as $news_item_main) : ?>
+        <?php
+        // Fetch all the meta data for each news and create the HTML markup.
+        $news_image_main = rwmb_meta( 'siml_main_news_picture', 'type=image', $news_item_main -> ID );
+        $news_image_main = reset($news_image_main); // There is only one element for each news, just get it.
+        $author_main = rwmb_meta( 'siml_news_author', 'type=text', $news_item_main -> ID );
+        $date_main = rwmb_meta( 'siml_main_news_date', 'type=datetime', $news_item_main -> ID );
+
+        $date_main = strtotime($date_main);
+        $location_main = rwmb_meta( 'siml_main_news_location', 'type=text', $news_item_main -> ID );
+
+
+        ?>
+
     <div id="content" class="grid_9" role="main">
         <div class="news-item-main">
             <article>
-                <img src="images/Event%20Poster%20Her.jpg" width="600">
+                <?php echo "<img src='{$news_image_main["url"]}' height='260'  alt='{$news_image_main['alt']}' />"; ?>
                 <div class="news-item-main-backdrop">
                     <div class="event-headline">
                         <h1>
-                            ITU.film presents "Her"
+                            <?php echo($news_item_main -> post_title) ?>
                         </h1>
                         <h1 class="visible-mobile">
-                            27th Feb, 16:00, AUD 1
+                            <?php echo(date("j F " , $date_main) . date("H:i ", $date_main) . "in " . $location_main);  ?>
                         </h1>
                     </div>
                     <p>
-                        ITU.Film is excited to invite you all to join us for our first screening
-                        in Auditorium 1. We will be rolling out the red carpet and showing
-                        you the film, Her, on the big screen!
+                        <?php echo($news_item_main -> post_content) ?>
                     </p>
                 </div>
             </article>
             <hr class="visible-mobile">
         </div>
+
+    <?php endforeach ?>
+
+
+        <?php
+        // Query args for fetching the news items.
+        $next_event_query_args = array(
+            'post_type'			=> 'news',
+            'posts_per_page'	=> 10,
+            'meta_key'			=> 'siml_news_date',
+            'orderby'			=> 'meta_value',
+            'order'				=> 'DESC'
+        );
+
+
+        // Get all the news items
+        $news = get_posts($next_event_query_args);
+        ?>
+        <?php foreach($news as $news_item) : ?>
+        <?php
+            // Fetch all the meta data for each news and create the HTML markup.
+            $news_image = rwmb_meta( 'siml_news_picture', 'type=image', $news_item -> ID );
+            $news_image = reset($news_image); // There is only one element for each news, just get it.
+            $author = rwmb_meta( 'siml_news_author', 'type=text', $news_item -> ID );
+            $date = rwmb_meta( 'siml_news_date', 'type=datetime', $news_item -> ID );
+            $date = strtotime($date);
+            ?>
+
         <div class="news-item">
             <article>
                 <div class="article-headline-container">
                     <h2 class=" article-headline">
-                        Announcing introductory speaker this Friday
+                        <?php echo($news_item -> post_title);?>
                     </h2>
-                    <h4 class="text-left no-margin"> Written by ITU.film </h4>
-                    <h4 class="text-right no-margin"> 25. feb. 2015 </h4>
+                    <h4 class="text-left no-margin"> Written by <?php echo($author); ?> </h4>
+                    <!--        Transform date                    -->
+                    <h4 class="text-right no-margin"> <?php echo(date("j M" . "." . " Y" , $date))?></h4>
                 </div>
                 <div class="news-item-images">
                     <figure>
-                        <img src="images/AI.jpeg">
+                        <!--    Override image size since WP sets it to 150x150                    -->
+                        <?php echo "<img src='{$news_image["url"]}' width='{$news_image["width"]}' height='140'  alt='{$news_image['alt']}' />"; ?>
                     </figure>
                     <!-- I decided to only include facebook integration since that is the only social site that ITU.film uses right now anyways.-->
                     <figure>
@@ -42,63 +100,20 @@
                     </figure>
                 </div>
                 <p>
-                    We’re very happy to announce that ITU’s own Judith Simon will introduce the screening of Her this Friday with a short talk on AI.
-                    Judith does research on Philosophy of Science and Computer ethics among other subjects.
-                    We hope that this will encourage you to look closer at the interesting views and issues with AI shown in the film.
-                </p>
-                <p>
-                    And of course, we in the ITU.Film crew are all looking very much forward to seeing you all at the screening this Friday!
+                        <!-- Output the news item content                    -->
+                    <?php echo($news_item -> post_content)?>
                 </p>
             </article>
             <hr/>
         </div>
-        <div class="news-item">
-            <article>
 
-                <div class="article-headline-container">
-                    <h2 class="article-headline">
-                        The Perks of being a Wallflower screening
-                    </h2>
-                    <h4 class="text-left no-margin"> Written by ITU.film </h4>
-                    <h4 class="text-right no-margin"> 9. feb. 2015 </h4>
-                </div>
-                <div class="news-item-images">
-                    <figure>
-                        <img src="images/Perks-of-Being-a-Wallflower-The-poster.jpg">
-                    </figure>
-                    <figure>
-                        <!-- Facebook Share Button -->
-                        <div class="fb-like" data-href="https://www.facebook.com/itu.film" data-layout="button" data-action="like" data-show-faces="false" data-share="true"></div>
-                    </figure>
-                </div>
-                <p>
-                    Join us in watching the everyday life of Charlie, an introvert freshman trying to fit in with help from seniors Sam (Emma Watson) and Patrick (Ezra Miller).
-                    Charlie is a freshman, struggling to find a place in high school.
-                    However, his life is forever changed after meeting the amazing Sam (played by Emma Watson) and the eccentric Patrick (played by Ezra Miller),
-                    joining them and their friends in what is going to be one heck of a year.
-                </p>
-            </article>
-            <hr/>
-        </div>
+        <?php endforeach ?>
     </div>
 
-
-<!---->
-<!---->
-<!--<section id="content" role="main">-->
-<?php //if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-<!--<article id="post---><?php //the_ID(); ?><!--" --><?php //post_class(); ?><!--> <!-->
-<!--<header class="header">-->
-<!--<h1 class="entry-title">--><?php //the_title(); ?><!--</h1> --><?php //edit_post_link(); ?>
-<!--</header>-->
-<!--<section class="entry-content">-->
-<?php //if ( has_post_thumbnail() ) { the_post_thumbnail(); } ?>
-<?php //the_content(); ?>
-<!--<div class="entry-links">--><?php //wp_link_pages(); ?><!--</div>-->
-<!--</section>-->
-<!--</article>-->
-<?php //if ( ! post_password_required() ) comments_template( '', true ); ?>
-<?php //endwhile; endif; ?>
-<!--</section>-->
-
+<?php else : ?>
+    <h2 class="center">Not Found</h2>
+    <p class="center">Sorry, but you are looking for
+        something that isn't here.</p>
+    <?php get_search_form(); ?>
+<?php endif; ?>
 <?php get_footer(); ?>

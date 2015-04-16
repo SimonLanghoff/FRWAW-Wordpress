@@ -42,6 +42,7 @@
                 <figcaption><?php echo ($event -> post_title); ?></figcaption>
             </figure>
             <p>
+                <!--        Transform date                    -->
                 <?php echo(date("j F " , $event_time) . '<br/>' . date("H:i ", $event_time) . "in " . $event_location);  ?>
             </p>
         </div>

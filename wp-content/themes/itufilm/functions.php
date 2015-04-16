@@ -104,13 +104,17 @@ function itufilm_comments_number($count)
 // List of movies
 function get_movie_list(){
     return array(
-        'movie1' => __( 'blue velvet', 'similar-movie' ),
-        'movie2' => __( 'twin-peaks', 'similar-movie' ),
-        'movie3' => __( 'eraser head', 'similar-movie' ),
-        'movie4' => __( 'x-files', 'similar-movie' ),
-        'movie5' => __( 'mulholland drive', 'similar-movie' ),
-        'movie6' => __( 'lost highway', 'similar-movie' ),
-        'movie7' => __( 'twin peaks series', 'similar-movie' ),
+        'movie1' => __( 'Blue Velvet', 'movie' ),
+        'movie2' => __( 'Twin Peaks', 'movie' ),
+        'movie3' => __( 'Eraser Head', 'movie' ),
+        'movie4' => __( 'X-files', 'movie' ),
+        'movie5' => __( 'Mulholland Drive', 'movie' ),
+        'movie6' => __( 'Lost Highway', 'movie' ),
+        'movie7' => __( 'Twin Peaks Series', 'movie' ),
+        'movie8' => __( 'Terminator', 'movie'),
+        'movie9' => __( 'Her', 'movie'),
+        'movie10' => __( 'Searching for Sugar Man', 'movie'),
+        'movie11' => __( 'The Room', 'movie' ),
     );
 }
 
@@ -121,6 +125,7 @@ add_filter('rwmb_meta_boxes', 'add_movie_meta');
 add_filter('rwmb_meta_boxes', 'add_news_info');
 add_filter('rwmb_meta_boxes', 'add_event_info');
 add_filter('rwmb_meta_boxes', 'add_recommendation');
+add_filter('rwmb_meta_boxes', 'add_main_news_info');
 
 function add_movie_meta ($args) {
     $prefix = 'siml_';
@@ -232,6 +237,50 @@ function add_news_info ($args) {
     return $args;
 }
 
+function add_main_news_info($args) {
+    $prefix = 'siml_';
+
+    $args[] = array (
+        'id' => 'main_news_item',
+        'title' => 'Main News Item',
+        'pages' => array('main_news_item'),
+        'context' => 'normal',
+        'priority' => 'high',
+
+        'fields' => array(
+            array(
+                'id' => $prefix . 'main_news_picture',
+                'name' => 'Picture',
+                'type' => 'image_advanced'
+            ),
+            array(
+                // Should link to a user
+                'id' => $prefix . 'main_news_author',
+                'name' => 'Author',
+                'type' => 'text'
+            ),
+            array(
+                'id' => $prefix . 'main_news_date',
+                'name' => 'Event Date (if appropriate)',
+                'type' => 'datetime',
+
+                'js_options' => array(
+                    'showTimepicker' => true,
+                ),
+            ),
+            array(
+                // Should link to a user
+                'id' => $prefix . 'main_news_location',
+                'name' => 'Location',
+                'type' => 'text'
+            ),
+        )
+    );
+
+    return $args;
+}
+
+
 // Meta box for the next event
 function add_event_info ($args) {
     $prefix = 'siml_';
@@ -324,29 +373,53 @@ function get_movie_info($movie_id){
             break;
         case "movie7":
             $movie_title = "twin-peaks-1990";
+            break;
+        case "movie8":
+            $movie_title = "terminator-1990";
+            break;
+        case "movie9":
+            $movie_title = "her-2014";
+            break;
+        case "movie10":
+            $movie_title = "searching-for-sugar-man-2012";
+            break;
+        case "movie11":
+            $movie_title = "the-room-1990";
+            break;
         default:
             echo("Movie not recognized!");
             break;
     }
 
 
-    $args = array(
-        'post_type' => 'movie',
-        'p' => $movie_title,
-    );
-
     $movie_info = null;
 
-    $result = new WP_Query( $args );
-    // Somehow gets all the movies out.
-    if ($result -> have_posts()){
-//        $movie_info = $result -> the_post();
-//        var_dump($result);
-//        var_dump(get_the_content());
-    }
+    // Query args for fetching a similar movie.
+    $next_event_query_args = array(
+        'name'              => $movie_title,
+        'post_type'			=> 'movie',
+        'posts_per_page'	=> 1
+    );
 
-    wp_reset_query();
-    wp_reset_postdata();
+    // Get all the news items
+    $movie_info = get_posts($next_event_query_args);
+
+//    $args = array(
+//        'post_type' => 'movie',
+//        'p' => $movie_title,
+//    );
+
+
+//    $result = new WP_Query( $args );
+//    // Somehow gets all the movies out.
+//    if ($result -> have_posts()){
+////        $movie_info = $result -> the_post();
+////        var_dump($result);
+////        var_dump(get_the_content());
+//    }
+//
+//    wp_reset_query();
+//    wp_reset_postdata();
 
     return $movie_info;
 }
