@@ -313,7 +313,7 @@ figure.no-margin > img {
     height: 100%;
 }
 
-.similar-movie-expanded > img {
+.similar-movie-expanded > a > img {
     width: 50%;
 }
 

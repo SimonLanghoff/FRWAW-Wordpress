@@ -9,7 +9,8 @@
     <?php
 
     // Output poster image
-    $images_poster = rwmb_meta( 'siml_movie_poster', 'type=image' );
+    $images = rwmb_meta( 'siml_movie_poster', 'type=image' );
+    $movie_poster_high = current($images); // Get the first element (high res poster)
 
     // Get the rating
     $rating = rwmb_meta( 'siml_rating', 'type=number' );
@@ -35,10 +36,7 @@
         <div class="movie-info-image">
             <!-- Display poster -->
             <?php
-            foreach ( $images_poster as $image )
-            {
-                echo "<img class\"no-margin\" src='{$image['url']}' width='{$image['width']}' height='{$image['height']}'  alt='{$image['alt']}' />";
-            }
+                echo "<img class\"no-margin\" src='{$movie_poster_high['url']}' width='{$movie_poster_high['width']}' height='{$movie_poster_high['height']}'  alt='{$movie_poster_high['alt']}' />";
             ?>
 
             <h3 class="text-overlay visible-mobile"><?php the_title() ?></h3>
@@ -99,143 +97,99 @@
             <button type="button">+</button>
         </div>
 
+
+
         <div id="collapse-similar-movies" class="collapse in similar-movies">
             <div class="image-grid no-margin">
                 <h2 class="visible-desktop">Similar Movies</h2>
 
-                <!-- Add posters -->
+                <!-- Go through each similar movie and add posters and movie info        -->
                 <?php
                 $count = 1;
-                foreach ( $similar_movie_ids as $movie_id ) {
+                foreach ( $similar_movie_ids as $movie_id ):
+                ?>
+                    <?php
                     // Get the correct movie title which can be used to fetch the posts:
                     $movie_info = get_movie_info($movie_id);
 
-                    // Create new Query to fetch data.
-
-//                    // Now we got the movie post for each similar movie, so get the poster image.
-//                    $similar_movie_posters = rwmb_meta( 'siml_movie_poster', 'type=image', $result -> ID );
-//                    foreach ( $similar_movie_posters as $movie_poster )
-//                    {
-////                        echo "displaying image";
-//
-////                        var_dump($result);
-//                        $link = the_permalink($result -> ID);
-////                        echo "<a href='$the_permalink($result -> ID)'> <img class\"no-margin\" src='{$movie_poster['url']}'  alt='{$movie_poster['alt']}' /> </a> ";
-////                         echo "<a href='$link' title='{$movie_poster['title']}'><img src='{$movie_poster['url']}' alt='{$movie_poster['alt']}' /></a>";
-//                    }
-
-//                        var_dump($movie_info);
-                $id = $movie_info -> ID;
-                // Output poster image
-                $similar_movie_poster = rwmb_meta( 'siml_movie_poster', 'type=image', $id);
-                $similar_movie_poster = reset($similar_movie_poster); // unwrap the array
-
-                // Get the rating
-                $rating = rwmb_meta( 'siml_rating', 'type=number', $id);
-                $recommendations_number = rwmb_meta( 'siml_rating', 'type=number', $id);
-                $similar_movie_ids = rwmb_meta( 'siml_similar-movies', 'type=select&multiple=true', $id );
-                $type = rwmb_meta( 'siml_type', 'type=text&multiple=true', $id );
-                $genre = rwmb_meta( 'siml_genre', 'type=text&multiple=true', $id );
-                $playtime = rwmb_meta( 'siml_playtime', 'type=text&multiple=true', $id );
-                $creators = rwmb_meta( 'siml_creators', 'type=text&multiple=true', $id );
-                $stars = rwmb_meta( 'siml_stars', 'type=text&multiple=true', $id );
-                $moods = rwmb_meta( 'siml_moods', 'type=text&multiple=true', $id );
-
-//                        var_dump($similar_movie_poster);
-                $link = get_permalink($id);
-//                        var_dump($link = the_permalink($result -> ID));
-                echo "<a href='$link' title='{$similar_movie_poster['title']}'><img class=\"movie-thumbnail movie-".$count."\" src='{$similar_movie_poster['url']}' alt='{$similar_movie_poster['alt']}' /></a>";
-
-                $count++;
-
-
-                }
+                    $id = $movie_info -> ID;
+                    // Output poster image
+                    $similar_movie_poster = rwmb_meta( 'siml_movie_poster', 'type=image', $id);
+                    $similar_movie_poster_low = next($similar_movie_poster); // get second item (low-res poster)
                 ?>
 
+                <!-- Add posters -->
+                <?php
+                    // Link to each movie.
+                    $link = get_permalink($id);
+                    echo "<a href='$link' title='{$similar_movie_poster_low['title']}'><img class=\"movie-thumbnail movie-".$count."\" src='{$similar_movie_poster_low['url']}' alt='{$similar_movie_poster_low['alt']}' /></a>";
 
-                <!-- Added div to horizontally align picture grid when viewed on mobile. -->
-                <a href="">
-                    <img class="movie-thumbnail movie-1" src="images/Movies/Blue%20Velvet%20Poster.jpg" alt="Movie Poster for Blue Velvet">
-                </a>
-                <a href="">
-                    <img class="movie-thumbnail movie-2" src="images/Movies/Twin%20Peaks%20Movie%20Poster.jpg" alt="Movie Poster for Twin Peaks the movie">
-                </a>
-                <a href="">
-                    <img class="movie-thumbnail movie-3" src="images/Movies/Eraser%20Head.jpg" alt="Movie Poster for Eraser Head">
-                </a>
-                <a href="">
-                    <img class="movie-thumbnail movie-4" src="images/Movies/The%20Xfiles.jpg" alt="Movie Poster for The X files">
-                </a>
-                <a href="">
-                    <img class="movie-thumbnail movie-5" src="images/Movies/Mulholland%20Drive.jpg" alt="Movie Poster for Mulholland Drive">
-                </a>
-                <a href="">
-                    <img class="movie-thumbnail movie-6" src="images/Movies/Lost%20Highway.jpg" alt="Movie Poster for Lost Highway">
-                </a>
+                    $count++;
+                ?>
+
+                <?php endforeach?>
             </div>
-            <!-- Highlighted Movie info should only be visible on desktop -->
-            <!-- A section for each similar movie is requested but only one is visible at a time -->
-            <div class="similar-movie-expanded movie-1 no-margin">
-                <img src="images/Movies/blue%20velvet%20high.jpg" alt="A higher resolution movie poster for Blue Velvet">
+
+            <!-- Go through each similar movie and add expanded movie info        -->
+            <?php
+            $count = 1;
+            foreach ( $similar_movie_ids as $movie_id ):
+            ?>
+            <?php
+                // Get the correct movie title which can be used to fetch the posts:
+                $movie_info = get_movie_info($movie_id);
+
+                $id = $movie_info -> ID;
+                // Output poster image
+                // TODO: get hires
+                $similar_movie_poster = rwmb_meta( 'siml_movie_poster', 'type=image', $id);
+                $similar_movie_poster_high = current($similar_movie_poster); // get first element (hi-res)
+
+
+                $rating = rwmb_meta( 'siml_rating', 'type=number', $id );
+                $recommendations_number = rwmb_meta( 'siml_rating', 'type=number', $id );
+                $similar_movie_ids = rwmb_meta( 'siml_similar-movies', 'type=select&multiple=true', $id );
+                $type = rwmb_meta( 'siml_type', 'type=text&multiple=true', $id );
+                $genre = rwmb_meta( 'siml_genre', 'type=text', $id );
+
+//            var_dump($similar_movie_poster_high);
+
+            ?>
+
+            <!-- Add similar movie information blocks. -->
+            <?php ?>
+
+            <div class="similar-movie-expanded <?php if($count != 1){ echo(" hidden "); }?> <?php echo("movie-"."$count"." no-margin\"");   echo(">"); ?>
+                <?php echo("<a href='$link' title='{$similar_movie_poster_high['title']}'><img src='{$similar_movie_poster_high['url']}' alt='{$similar_movie_poster_high['alt']}' /></a>"); ?>
+
                 <div class="info-container">
-                    <h2>Blue Velvet</h2>
-                    <p><strong>Crime, Drama, Mystery</strong></p>
+
+                    <h2><?php echo($movie_info -> post_title)?></h2>
+                    <p><strong><?php echo("$genre")?></strong></p>
                     <p>
-                        The discovery of a severed human ear found in a field leads a young man on an investigation related to a beautiful, mysterious nightclub singer and a group of psychopathic criminals who have kidnapped her child.
+                        <?php echo($movie_info -> post_content)?>
                     </p>
                 </div>
             </div>
-            <div class="similar-movie-expanded movie-2 no-margin hidden">
-                <img src="images/Movies/Twin%20Peaks%20Movie%20Poster.jpg" alt="Movie poster for Twin Peaks">
-                <div class="info-container">
-                    <h2>Twin Peaks: Fire Walk With Me</h2>
-                    <p><strong>Thriller, Mystery</strong></p>
-                    <p>
-                        A young FBI agent disappears while investigating a murder miles from Twin Peaks that may be related to the future murder of Laura Palmer; the last week of the life of Laura Palmer is chronicled.
-                    </p>
-                </div>
-            </div>
-            <div class="similar-movie-expanded movie-3 no-margin hidden">
-                <img src="images/Movies/Eraser%20Head.jpg" alt="Movie poster for Eraserhead">
-                <div class="info-container">
-                    <h2>Eraserhead</h2>
-                    <p><strong>Drama, Horror, Mystery</strong></p>
-                    <p>
-                        Henry Spencer tries to survive his industrial environment, his angry girlfriend, and the unbearable screams of his newly born mutant child.
-                    </p>
-                </div>
-            </div>
-            <div class="similar-movie-expanded movie-4 no-margin hidden">
-                <img src="images/Movies/The%20Xfiles.jpg" alt="Movie poster for The X-files">
-                <div class="info-container">
-                    <h2>The X-files</h2>
-                    <p><strong>Drama, Mystery</strong></p>
-                    <p>
-                        Two FBI agents, Fox Mulder the believer and Dana Scully the skeptic, investigate the strange and unexplained while hidden forces work to impede their efforts.
-                    </p>
-                </div>
-            </div>
-            <div class="similar-movie-expanded movie-5 no-margin hidden">
-                <img src="images/Movies/Mulholland%20Drive.jpg" alt="Movie poster for Mulholland Drive">
-                <div class="info-container">
-                    <h2>Mulholland Drive</h2>
-                    <p><strong>Drama, Thriller, Mystery</strong></p>
-                    <p>
-                        After a car wreck on the winding Mulholland Drive renders a woman amnesiac, she and a perky Hollywood-hopeful search for clues and answers across Los Angeles in a twisting venture beyond dreams and reality.
-                    </p>
-                </div>
-            </div>
-            <div class="similar-movie-expanded movie-6 no-margin hidden">
-                <img src="images/Movies/Lost%20Highway.jpg" alt="Movie poster for Lost Highway">
-                <div class="info-container">
-                    <h2>Lost Highway</h2>
-                    <p><strong>Drama, Mystery, Thriller</strong></p>
-                    <p>
-                        After a bizarre encounter at a party, a jazz saxophonist is framed for the murder of his wife and sent to prison, where he inexplicably morphs into a young mechanic and begins leading a new life.
-                    </p>
-                </div>
-            </div>
+
+<!--            <div class="similar-movie-expanded movie-2 no-margin hidden">-->
+<!--                <img src="images/Movies/Twin%20Peaks%20Movie%20Poster.jpg" alt="Movie poster for Twin Peaks">-->
+<!--                <div class="info-container">-->
+<!--                    <h2>Twin Peaks: Fire Walk With Me</h2>-->
+<!--                    <p><strong>Thriller, Mystery</strong></p>-->
+<!--                    <p>-->
+<!--                        A young FBI agent disappears while investigating a murder miles from Twin Peaks that may be related to the future murder of Laura Palmer; the last week of the life of Laura Palmer is chronicled.-->
+<!--                    </p>-->
+<!--                </div>-->
+<!--            </div>-->
+
+        <!-- Make sure to increase counter         -->
+            <?php
+                $count++;
+                endforeach
+            ?>
         </div>
+
     </div>
 
 
@@ -286,7 +240,6 @@
 <?php
 wp_reset_query();
 ?>
-
 
     <!---->
     <!--<section id="content" role="main">-->
