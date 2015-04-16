@@ -255,7 +255,7 @@ figure.no-margin > img {
 }
 
 /* Horizontal Separator Line between news items.*/
-#home-page hr {
+.home-page hr {
     width:90%;
     height: 1px !important;
     background: #000000;

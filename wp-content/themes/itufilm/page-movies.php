@@ -41,6 +41,14 @@
     <div class="recommendations">
         <div class="user-comments">
             <h2> Latest Recommendations </h2>
+
+            <?php
+                // Get the recommendations
+                            
+
+            ?>
+
+
             <article class="comment row-even">
                 <div class="comment-picture">
                     <img src="images/profile_dummy.jpg">

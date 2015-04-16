@@ -98,7 +98,7 @@ figure.no-margin > img {
 /************************************/
 
 /* Use up all available space */
-#home-page {
+.home-page {
     width: 100%;
 }
 
@@ -136,7 +136,7 @@ figure.no-margin > img {
 }
 
 /* Horizontal Separator Line between news items.*/
-#home-page hr {
+.home-page hr {
     width:90%;
     height: 1px !important;
     background: #000000;

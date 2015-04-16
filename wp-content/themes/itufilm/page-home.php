@@ -31,7 +31,7 @@
 
         ?>
 
-    <div id="content" class="grid_9" role="main">
+    <div id="content" class="grid_9 home-page" role="main">
         <div class="news-item-main">
             <article>
                 <?php echo "<img src='{$news_image_main["url"]}' height='260'  alt='{$news_image_main['alt']}' />"; ?>
