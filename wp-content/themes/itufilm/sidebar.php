@@ -1,7 +1,36 @@
 <aside id="sidebar" role="complementary">
 <?php if ( is_active_sidebar( 'primary-widget-area' ) ) : ?>
+
     <!-- Sidebar -->
     <aside class="grid_3">
+
+
+        <?php
+        // Query args for fetching the featured screening.
+        $next_event_query_args = array(
+            'post_type'			=> 'Event',
+            'posts_per_page'	=> 1,
+            'meta_key'			=> 'siml_event_time',
+            'orderby'			=> 'meta_value',
+            'order'				=> 'ASC'
+        );
+
+
+        // Get featured screening.
+        $result = get_posts($next_event_query_args);
+        $event = $result[0];
+
+        $event_time = rwmb_meta('siml_event_time', 'type=datetime', $event -> ID );
+        $event_location = rwmb_meta('siml_location', 'type=text', $event -> ID );
+        var_dump($event_time);
+        var_dump($event_location);
+
+        var_dump($event);
+
+        ?>
+
+
+
         <!-- Next event info-->
         <div class="next-event text-center">
             <h4>
@@ -12,6 +41,9 @@
                 <figcaption>"Her"</figcaption>
             </figure>
             <p>
+
+                <?php echo(date("j F " , $event_meta) . '<br/>' . date("H:i ", $event_meta) . "in" . $event_location);  ?>
+
                 27th February<br/>
                 16:00 in AUD 1
             </p>

@@ -298,17 +298,6 @@ function add_recommendation ($args) {
     return $args;
 }
 
-
-// Add a filter such that we can query custom posts using the title.
-add_filter( 'posts_where', 'title_like_posts_where', 10, 2 );
-function title_like_posts_where( $where, &$wp_query ) {
-    global $wpdb;
-    if ( $post_title_like = $wp_query->get( 'post_title_like' ) ) {
-        $where .= ' AND ' . $wpdb->posts . '.post_title LIKE \'' . esc_sql( $wpdb->esc_like( $post_title_like ) ) . '%\'';
-    }
-    return $where;
-}
-
 // Simple function used to get the correct movie based on its id.
 // This should really be done by matching together the custom post type meta box with the corresponding
 // movie, but this will do for simple showcasing of the functionality.
@@ -340,58 +329,48 @@ function get_movie_info($movie_id){
             break;
     }
 
-    global $post;
-    // Create new Query to fetch data.
+
     $args = array(
-        'post_type' => 'Movie',
-//        'post_title_like' => $movie_title
-        'p => $movie_title'
+        'post_type' => 'movie',
+        'p' => $movie_title,
     );
 
-    $result = new WP_Query( $args );
+    $movie_info = null;
 
+    $result = new WP_Query( $args );
+    // Somehow gets all the movies out.
     if ($result -> have_posts()){
-        $result -> the_post();
+//        $movie_info = $result -> the_post();
+//        var_dump($result);
+//        var_dump(get_the_content());
     }
 
-    return $result;
+    wp_reset_query();
+    wp_reset_postdata();
 
-//    $args = array(
-//        'post_title_like' => $movie_title
-//    );
-//    // TODO: do new here so we don't have to clear.
-//    $result = new WP_Query( $args );
-//
-//
-//    if ($result -> have_posts()){
-//        while ($result->have_posts()){
-//            var_dump($result->the_post());
-//        }
-//
-//    }
-//    wp_reset_query();
-//
-//    return $result;
+    return $movie_info;
+}
 
-//
-//    $args = array(
-//        'post_type' => 'my_post_type',
-//        'post_status' => 'publish',
-//        'posts_per_page' => -1
-//    );
-//    $posts = new WP_Query( $args );
-//    if ( $posts -> have_posts() ) {
-//        while ( $posts -> have_posts() ) {
-//
-//            the_content();
-//            // Or your video player code here
-//
-//        }
-//    }
-//    wp_reset_query();
-//
-//    return $result;
+/* Simple Function to get predefined images for ratings. */
+function get_rating_image_dir($rating_number){
 
+    $uri = null;
+    switch($rating_number){
+        case 7:
+            $uri = get_template_directory_uri() . "/images/Movies/ratings/RatingStar7.png";
+            break;
+        case 8:
+            $uri = get_template_directory_uri() . "/images/Movies/ratings/RatingStar8.png";
+            break;
+        case 9:
+            $uri = get_template_directory_uri() . "/images/Movies/ratings/RatingStar9.png";
+            break;
+        default:
+            $uri = get_template_directory_uri() . "/images/Movies/ratings/RatingStar10.png";
+            break;
+    }
+
+    return $uri;
 }
 
 ?>

@@ -14,9 +14,20 @@
     $rating = rwmb_meta( 'siml_rating', 'type=number' );
     $recommendations_number = rwmb_meta( 'siml_rating', 'type=number' );
     $similar_movie_ids = rwmb_meta( 'siml_similar-movies', 'type=select&multiple=true' );
+    $type = rwmb_meta( 'siml_type', 'type=text&multiple=true' );
+    $genre = rwmb_meta( 'siml_genre', 'type=text&multiple=true' );
+    $playtime = rwmb_meta( 'siml_playtime', 'type=text&multiple=true' );
+    $creators = rwmb_meta( 'siml_creators', 'type=text&multiple=true' );
+    $stars = rwmb_meta( 'siml_stars', 'type=text&multiple=true' );
+    $moods = rwmb_meta( 'siml_moods', 'type=text&multiple=true' );
     ?>
 
-
+<?php else : ?>
+    <h2 class="center">Not Found</h2>
+    <p class="center">Sorry, but you are looking for
+        something that isn't here.</p>
+    <?php get_search_form(); ?>
+<?php endif; ?>
 
     <div id="content" class="grid_9">
     <div class="movie-info-container">
@@ -25,7 +36,7 @@
             <?php
             foreach ( $images_poster as $image )
             {
-            echo "<img class\"no-margin\" src='{$image['url']}'  alt='{$image['alt']}' />";
+            echo "<img class\"no-margin\" src='{$image['url']}' width='{$image['width']}' height='{$image['height']}'  alt='{$image['alt']}' />";
             }
             ?>
 
@@ -49,22 +60,21 @@
             <h1 class="visible-desktop"><?php the_title() ?></h1>
             <hr class="horizontal-separator no-margin">
 
-
-
             <div class="rating">
-                <img src="images/RatingStar.png" alt="A star-shaped polygon with the rating of the movie inside">
+                <?php $rating_image = get_rating_image_dir($rating);?>
+                <img src="<?php echo($rating_image)?>" alt="A star-shaped polygon with the rating of the movie inside">
                 <br>
-                <a href="#">4 Recommendations</a>
+                <a href="#"> <?php echo("$recommendations_number"); ?> Recommendations</a>
             </div>
 
             <div class="movie-info-list">
                 <ul>
-                    <li>Type: TV Series</li>
-                    <li>Genre: Drama, Mystery, Thriller</li>
-                    <li>Playtime: 47 minutes</li>
-                    <li>Creators: Mark Frost, David Lynch</li>
-                    <li>Stars: Kyle MacLachlan, Michael Ontkean, Mädchen Amick</li>
-                    <li>Moods: Adventurous, Spooky, Experimental</li>
+                    <li>Type: <?php echo("$type[0]")?></li>
+                    <li>Genre: <?php echo("$genre[0]")?></li>
+                    <li>Playtime: <?php echo("$playtime[0]")?></li>
+                    <li>Creators: <?php echo("$creators[0]")?></li>
+                    <li>Stars: <?php echo("$stars[0]")?></li>
+                    <li>Moods: <?php echo("$moods[0]")?></li>
                 </ul>
             </div>
             <hr class="horizontal-separator">
@@ -98,27 +108,21 @@
                     // Get the correct movie title which can be used to fetch the posts:
                     $movie_info = get_movie_info($movie_id);
 
-                    var_dump($movie_info -> ID);
+                    // Create new Query to fetch data.
+
+//                    // Now we got the movie post for each similar movie, so get the poster image.
+//                    $similar_movie_posters = rwmb_meta( 'siml_movie_poster', 'type=image', $result -> ID );
+//                    foreach ( $similar_movie_posters as $movie_poster )
+//                    {
+////                        echo "displaying image";
+//
+////                        var_dump($result);
+//                        $link = the_permalink($result -> ID);
+////                        echo "<a href='$the_permalink($result -> ID)'> <img class\"no-margin\" src='{$movie_poster['url']}'  alt='{$movie_poster['alt']}' /> </a> ";
+////                         echo "<a href='$link' title='{$movie_poster['title']}'><img src='{$movie_poster['url']}' alt='{$movie_poster['alt']}' /></a>";
+//                    }
 
 
-
-
-
-
-                    // TODO: Change the global post stuff?
-                    // Now we got the movie post for each similar movie, so get the poster image.
-                    $similar_movie_posters = rwmb_meta( 'siml_movie_poster', 'type=image' );
-                    foreach ( $similar_movie_posters as $movie_poster )
-                    {
-
-
-                        $link = the_permalink($movie_post -> ID);
-                     echo "<a href='$the_permalink($movie_post -> ID)'> <img class\"no-margin\" src='{$image['url']}'  alt='{$image['alt']}' /> </a> ";
-                         echo "<a href='$link' title='{$movie_poster['title']}'><img src='{$movie_poster['url']}' alt='{$movie_poster['alt']}' /></a>";
-                    }
-
-                    wp_reset_query();
-                    wp_reset_postdata();
                 }
                 ?>
                 <!-- Added div to horizontally align picture grid when viewed on mobile. -->
@@ -248,12 +252,7 @@
 <!--            </div>-->
 <!--        </div>-->
 
-<?php else : ?>
-    <h2 class="center">Not Found</h2>
-    <p class="center">Sorry, but you are looking for
-        something that isn't here.</p>
-    <?php get_search_form(); ?>
-<?php endif; ?>
+
 
     <!-- Make sure to reset query-->
 <?php
