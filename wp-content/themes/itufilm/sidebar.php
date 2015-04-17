@@ -9,16 +9,30 @@
         // Query args for fetching the featured screening.
         $next_event_query_args = array(
             'post_type'			=> 'Event',
-            'posts_per_page'	=> 1,
+//            'posts_per_page'	=> 1,
             'meta_key'			=> 'siml_event_time',
             'orderby'			=> 'meta_value',
             'order'				=> 'DESC'
         );
 
-
         // Get featured screening.
         $result = get_posts($next_event_query_args);
-        $event = $result[0];
+
+        $future_events = array();
+        $current_time = time();
+        foreach($result as $event){
+            // Only get the events that are right now or in the future.
+            $event_time = rwmb_meta('siml_event_time', 'type=datetime', $event -> ID );
+            $event_time = strtotime($event_time);
+
+            // Event is in the future, add it to our collection
+            if($event_time > $current_time) {
+                array_push($future_events, $event);
+            }
+        }
+
+        // Take the first element, the first added will be the next upcoming event due to the ordering
+        $event = $future_events[0];
         $event_link = get_permalink($event -> ID);
 
         $event_posters = rwmb_meta( 'siml_event_picture', 'type=image&size=143x212', $event -> ID );
@@ -28,6 +42,15 @@
         $event_time = strtotime($event_time);
         ?>
 
+        <?php if(empty($future_events)) : ?>
+
+        <!-- Next event info-->
+        <div class="next-event text-center">
+            <h4>
+                No Screenings Planned
+            </h4>
+        </div>
+        <?php else : ?>
         <!-- Next event info-->
         <div class="next-event text-center">
             <h4>
@@ -44,6 +67,7 @@
                 <?php echo(date("j F " , $event_time) . '<br/>' . date("H:i ", $event_time) . "in " . $event_location);  ?>
             </p>
         </div>
+        <?php endif ?>
 
         <!-- Using a simple poll and survey service from pollcode.com to showcase poll functionality -->
         <div class="poll">
