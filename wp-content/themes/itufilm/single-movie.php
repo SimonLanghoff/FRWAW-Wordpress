@@ -171,17 +171,6 @@
                 </div>
             </div>
 
-<!--            <div class="similar-movie-expanded movie-2 no-margin hidden">-->
-<!--                <img src="images/Movies/Twin%20Peaks%20Movie%20Poster.jpg" alt="Movie poster for Twin Peaks">-->
-<!--                <div class="info-container">-->
-<!--                    <h2>Twin Peaks: Fire Walk With Me</h2>-->
-<!--                    <p><strong>Thriller, Mystery</strong></p>-->
-<!--                    <p>-->
-<!--                        A young FBI agent disappears while investigating a murder miles from Twin Peaks that may be related to the future murder of Laura Palmer; the last week of the life of Laura Palmer is chronicled.-->
-<!--                    </p>-->
-<!--                </div>-->
-<!--            </div>-->
-
         <!-- Make sure to increase counter         -->
             <?php
                 $count++;

@@ -405,23 +405,6 @@ function get_movie_info($movie_id){
     // Movie is wrapped in an array, get the first item.
     $movie_info = reset($movie_info);
 
-//    $args = array(
-//        'post_type' => 'movie',
-//        'p' => $movie_title,
-//    );
-
-
-//    $result = new WP_Query( $args );
-//    // Somehow gets all the movies out.
-//    if ($result -> have_posts()){
-////        $movie_info = $result -> the_post();
-////        var_dump($result);
-////        var_dump(get_the_content());
-//    }
-//
-//    wp_reset_query();
-//    wp_reset_postdata();
-
     return $movie_info;
 }
 
@@ -446,6 +429,26 @@ function get_rating_image_dir($rating_number){
 
     return $uri;
 }
+
+// Exclude pages from the search results.
+add_action('pre_get_posts','exclude_all_pages_search');
+function exclude_all_pages_search($query) {
+    if (
+        ! is_admin()
+        && $query->is_main_query()
+        && $query->is_search
+        && is_user_logged_in()
+    )
+        $query->set( 'post_type', array('post', 'movie', 'recommendation', 'comment', 'event') );
+}
+
+// We need to get all kinds of custom type posts when we look at an author page.
+function custom_post_author_archive($query) {
+    if ($query->is_author)
+        $query->set( 'post_type', array('movie', 'recommendation', 'news', 'main_news_item', 'comment') );
+    remove_action( 'pre_get_posts', 'custom_post_author_archive' );
+}
+add_action('pre_get_posts', 'custom_post_author_archive');
 
 ?>
 

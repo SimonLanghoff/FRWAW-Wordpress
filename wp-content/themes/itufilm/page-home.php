@@ -23,7 +23,7 @@
         $news_image_main = rwmb_meta( 'siml_main_news_picture', 'type=image&size=700x259', $news_item_main -> ID );
         $news_image_main = reset($news_image_main); // There is only one element for each news, just get it.
         $username = get_userdata($news_item_main -> post_author)->display_name; // accessed using magic! woo!
-        $author_link = get_permalink($news_item_main -> post_author);
+        $author_link = get_author_posts_url($news_item_main -> post_author);
         $date_main = rwmb_meta( 'siml_main_news_date', 'type=datetime', $news_item_main -> ID );
 
         $date_main = strtotime($date_main);
@@ -77,7 +77,8 @@
             // Fetch all the meta data for each news and create the HTML markup.
             $news_image = rwmb_meta( 'siml_news_picture', 'type=image&size=200x120', $news_item -> ID );
             $news_image = reset($news_image); // There is only one element for each news, just get it.
-            $author_link = get_permalink($news_item -> post_author);
+            $author = get_userdata($news_item -> post_author)->display_name; // accessed using magic! woo!
+            $author_link = get_author_posts_url($news_item -> post_author);
             $date = rwmb_meta( 'siml_news_date', 'type=datetime', $news_item -> ID );
             $date = strtotime($date);
 
@@ -92,7 +93,7 @@
                         <?php echo($news_item -> post_title);?>
                     </h2>
                     </a>
-                    <h4 class="text-left no-margin"> Written by <?php echo($author); ?> </h4>
+                    <h4 class="text-left no-margin"> Written by <?php echo( "<a href=\"$author_link\">$author </a>"); ?> </h4>
                     <!--        Transform date                    -->
                     <h4 class="text-right no-margin"> <?php echo(date("j M" . "." . " Y" , $date))?></h4>
                 </div>

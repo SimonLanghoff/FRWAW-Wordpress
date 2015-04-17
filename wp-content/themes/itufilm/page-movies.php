@@ -69,11 +69,10 @@
                 // Get meta data (
                 $recommended_movie = rwmb_meta('siml_recommended_movie', 'type=text', $recommendation -> ID );
                 $recommended_movie = get_movie_info($recommended_movie);
-
                 $username = get_userdata($recommendation -> post_author)->display_name; // accessed using magic! woo!
                 $movie_link = get_permalink($recommended_movie -> ID);
                 $movie_title = $recommended_movie -> post_title;
-                $user_link = get_permalink($recommendation -> post_author);
+                $user_link = get_author_posts_url($recommendation -> post_author);
 
 
 
