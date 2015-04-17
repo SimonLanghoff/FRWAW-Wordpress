@@ -4,12 +4,15 @@
     <div id="content" class="grid_9">
     <h1>ITU.film's Movie Database</h1>
 
+
+    <?php get_search_form(); ?>
     <!-- Image loaded in css -->
-    <div class="search-box">
-        <input class="visible-desktop" type="text">
-        <!-- Example search input for mobile version -->
-        <input class="visible-mobile" type="text" placeholder="Bittersweet, touching, gloomy">
-    </div>
+<!--    <div class="search-box only-search">-->
+<!--        <input class="visible-desktop" type="text">-->
+<!---->
+<!--        <!-- Example search input for mobile version --><!-->
+<!--        <input class="visible-mobile" type="text" placeholder="Bittersweet, touching, gloomy">-->
+<!--    </div>-->
 
     <!--
         Here I add some content to simulate that a user has searched for a movie.
@@ -79,8 +82,6 @@
 
                 ?>
 
-            <?php ?>
-
             <article class="comment <?php  if($count % 2 == 0) { echo "row-even"; }   ?>  ">
                 <div class="comment-picture">
                     <?php echo " <img src=\"" . get_template_directory_uri() . "/images/profile_dummy.jpg\" >"?>
@@ -106,71 +107,90 @@
         <div class="movie-list">
             <h2>Latest Movies</h2>
             <ul class="no-margin">
+
+                <?php
+                // Get the different movies
+
+                // TODO: Sort by date.
+                // Query args for fetching the featured screening.
+                $get_movies_query_args = array(
+                    'post_type'			=> 'Movie',
+                    'posts_per_page'	=> 10,
+                    'orderby'			=> 'post_date',
+                    'order'				=> 'DESC'
+                );
+
+                $movies = get_posts($get_movies_query_args);
+                ?>
+
+                <?php foreach($movies as $movie):?>
+                <?php
+                $movie_link = get_permalink($movie -> ID);
+                $movie_title = $movie -> post_title;
+                ?>
+
                 <li>
-                    <a href="#">Her</a>
+                    <?php echo("<a href=\"$movie_link\">$movie_title</a>"); ?>
                 </li>
-                <li>
-                    <a href="#">The Perks of Being a Wallflower</a>
-                </li>
-                <li>
-                    <a href="#">Searching for Sugar Man</a>
-                </li>
-                <li>
-                    <a href="movie.html">Twin Peaks</a>
-                </li>
-                <li>
-                    <a href="#">Terminator</a>
-                </li>
-                <li>
-                    <a href="#">The Room</a>
-                </li>
+
+                <?php endforeach ?>
+
             </ul>
             <a href="#">More Movies...</a>
         </div>
+
+        <?php
+        // Get the different events and their dates
+
+        // TODO: Sort by date.
+        // Query args for fetching the featured screening.
+        $get_events_query_args = array(
+            'post_type'			=> 'Event',
+            'posts_per_page'	=> 10,
+            'orderby'			=> 'post_date',
+            'order'				=> 'DESC'
+        );
+
+        $events = get_posts($get_events_query_args);
+        ?>
+
         <div class="event-wrapper">
             <div class="event-list">
                 <h2>Screening Events</h2>
                 <ul class="no-margin">
-                    <li>
-                        <a href="#">Game of Thrones Premiere</a>
-                    </li>
-                    <li>
-                        <a href="#">Her</a>
-                    </li>
-                    <li>
-                        <a href="#">The Perks of Being a Wallflower</a>
-                    </li>
-                    <li>
-                        <a href="#">Searching for Sugar Man</a>
-                    </li>
-                    <li>
-                        <a href="#">Twin Peaks Season 2 Episode 2</a>
-                    </li>
-                    <li>
-                        <a href="#">Twin Peaks Season 2 Episode Start</a>
-                    </li>
+
+
+
+                    <?php foreach($events as $event):?>
+                        <?php
+                        $event_link = get_permalink($event -> ID);
+                        $event_title = $event -> post_title;
+                        ?>
+
+                        <li>
+                            <?php echo("<li><a href=\"$event_link\">$event_title</a></li>"); ?>
+                        </li>
+
+                    <?php endforeach ?>
                 </ul>
             </div>
             <div class="event-dates">
                 <ul class="no-margin">
-                    <li>
-                        4th Mar
-                    </li>
-                    <li>
-                        27th Feb
-                    </li>
-                    <li>
-                        13th Feb
-                    </li>
-                    <li>
-                        6th Feb
-                    </li>
-                    <li>
-                        30th Oct
-                    </li>
-                    <li>
-                        23rd Oct
-                    </li>
+
+                    <?php foreach($events as $event):?>
+                        <?php
+                        // Go through all the events again and display their dates.
+                        $event_date = rwmb_meta('siml_event_time', 'type=datetime', $event -> ID );
+                        $event_date = date("dS M", strtotime($event_date));
+
+
+                        ?>
+
+                        <li>
+                            <?php echo("<li>$event_date</li>"); ?>
+                        </li>
+
+                    <?php endforeach ?>
                 </ul>
             </div>
             <a href="#">More Events...</a>

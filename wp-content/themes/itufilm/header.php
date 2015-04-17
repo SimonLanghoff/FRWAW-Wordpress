@@ -10,9 +10,12 @@
 <body <?php body_class(); ?>>
 <div class="container_12">
     <header>
+        <a href="<?php echo home_url(); ?>">
         <div class="banner-logo-container grid_3">
+
             <!-- Image loaded as background image in css-->
         </div>
+        </a>
         <?php wp_nav_menu('main_menu')?>
     </header>
 

@@ -19,7 +19,7 @@
         // Get featured screening.
         $result = get_posts($next_event_query_args);
         $event = $result[0];
-
+        $event_link = get_permalink($event -> ID);
 
         $event_posters = rwmb_meta( 'siml_event_picture', 'type=image&size=143x212', $event -> ID );
         $event_poster = reset($event_posters); // Rewind and get the first element of the array (there should only be one)
@@ -28,8 +28,6 @@
         $event_time = strtotime($event_time);
         ?>
 
-
-
         <!-- Next event info-->
         <div class="next-event text-center">
             <h4>
@@ -37,7 +35,7 @@
             </h4>
             <figure class="no-margin">
                 <?php
-                 echo "<img src='{$event_poster['url']}' width='{$event_poster['width']}' height='{$event_poster['height']}'  alt='{$event_poster['alt']}' />";
+                 echo "<a href=\"$event_link\"><img src='{$event_poster['url']}' width='{$event_poster['width']}' height='{$event_poster['height']}'  alt='{$event_poster['alt']}' /></a>";
                 ?>
                 <figcaption><?php echo ($event -> post_title); ?></figcaption>
             </figure>
@@ -76,11 +74,5 @@
     </aside>
 
     <div class="separator"> </div>
-
-    <!--<div id="primary" class="widget-area">-->
-<!--<ul class="xoxo">-->
-<?php //dynamic_sidebar( 'primary-widget-area' ); ?>
-<!--</ul>-->
-<!--</div>-->
 <?php endif; ?>
 </aside>

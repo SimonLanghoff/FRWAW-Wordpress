@@ -104,14 +104,15 @@ figure.no-margin > img {
 
 /* Show event-info in top right corner of the backdrop and
     align the headlines accordingly */
-.event-headline > h1 {
+.event-headline > a > h1 {
+    color: #333;
     float: left;
     font-size: x-large;
     margin: 0;
     width: calc(60% - 20px);
 }
 
-.event-headline > h1.visible-mobile {
+.event-headline > a > h1.visible-mobile {
     float: right;
     font-size: x-large;
     margin: 0;
