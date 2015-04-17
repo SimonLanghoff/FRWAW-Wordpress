@@ -181,52 +181,13 @@
     </div>
 
 
-<!--        Add comments here -->
+<!-- Add comments here -->
 
-    <?php comments_template(); ?>
-<!--        <div class="user-comments-container">-->
-<!--            <div class="user-comments">-->
-<!--                <h2 class="visible-desktop">Comments</h2>-->
-<!--                <!-- Using Bootstrap to collapse content. Somehow it does not work correctly though--><!-->
-<!--                <div class="mobile-header visible-mobile toggle-button" data-toggle="collapse" data-target="#collapse-comments">-->
-<!--                    <h2>Comments</h2>-->
-<!--                    <!-- The button is just dummy content, used to indicate that it is clickable, but clicking anywhere will result in collapsing--><!-->
-<!--                    <button type="button">+</button>-->
-<!--                </div>-->
-<!--                <div id="collapse-comments" class="comments-container visible-desktop collapse in">-->
-<!--                    <article class="comment row-even">-->
-<!--                        <div class="comment-picture">-->
-<!--                            <img src="images/profile_dummy.jpg" alt="Profile Picture of a User">-->
-<!--                        </div>-->
-<!--                        <div class="comment-text">-->
-<!--                            <h4>Simon Langhoff</h4>-->
-<!--                            <span class="date">19 feb. 2015</span>-->
-<!--                            <p>-->
-<!--                                I am a huge fan of Twin Peaks! Best TV-Series ever! #omg-best-tv-series-ever-->
-<!--                            </p>-->
-<!--                        </div>-->
-<!--                    </article>-->
-<!--                    <article class="comment">-->
-<!--                        <div class="comment-picture">-->
-<!--                            <img src="images/profile_dummy.jpg" alt="Profile Picture of a User">-->
-<!--                        </div>-->
-<!--                        <div class="comment-text">-->
-<!--                            <h4>Billy</h4>-->
-<!--                            <span class="date">19 feb. 2015</span>-->
-<!--                            <p>-->
-<!--                                Kyle MacLachlan &lt;3-->
-<!--                            </p>-->
-<!--                        </div>-->
-<!--                    </article>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-
-
-
-    <!-- Make sure to reset query-->
 <?php
+// Make sure to reset query, otherwise the WP query used in the comment section will display comments from the latest movie fetched.
 wp_reset_query();
 ?>
+
+<?php comments_template(); ?>
 
 <?php get_footer(); ?>

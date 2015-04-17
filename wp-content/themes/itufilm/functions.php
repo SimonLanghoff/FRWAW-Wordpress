@@ -331,6 +331,7 @@ function add_recommendation ($args) {
         'context' => 'normal',
         'priority' => 'high',
 
+
         'fields' => array(
             array(
                 // Let the user select from the list of movies

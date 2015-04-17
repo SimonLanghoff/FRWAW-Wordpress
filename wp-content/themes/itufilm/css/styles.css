@@ -419,6 +419,15 @@ figure.no-margin > img {
     background-color: #d7d7d7;
 }
 
+.even > .comment-body {
+    background-color: #d7d7d7;
+}
+
+.odd > .comment-body {
+    background-color: #f4f4f4; /* Give the same color as the wrapper*/
+}
+
+
 /************************************/
 /********* Recommendations **********/
 /************************************/

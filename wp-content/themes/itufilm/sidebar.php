@@ -12,7 +12,7 @@
             'posts_per_page'	=> 1,
             'meta_key'			=> 'siml_event_time',
             'orderby'			=> 'meta_value',
-            'order'				=> 'ASC'
+            'order'				=> 'DESC'
         );
 
 

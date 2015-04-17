@@ -6,40 +6,6 @@
 
 
     <?php get_search_form(); ?>
-    <!-- Image loaded in css -->
-<!--    <div class="search-box only-search">-->
-<!--        <input class="visible-desktop" type="text">-->
-<!---->
-<!--        <!-- Example search input for mobile version --><!-->
-<!--        <input class="visible-mobile" type="text" placeholder="Bittersweet, touching, gloomy">-->
-<!--    </div>-->
-
-    <!--
-        Here I add some content to simulate that a user has searched for a movie.
-         (Since the search bar is only designed, it's not functional)
-         This will make the mobile version look more like the design I did previously.
-    -->
-
-    <div class="search-results-container visible-mobile">
-        <h4>Results for bittersweet, touching, gloomy</h4>
-        <div class="search-results">
-            <div class="search-result">
-                <a href=""><img src="images/Perks-of-Being-a-Wallflower-The-poster.jpg"></a>
-                <h3 class="text-overlay">The Perks of Being a Wallflower (2012)</h3>
-            </div>
-            <div class="search-result hidden">
-                <a href=""><img src="images/Perks-of-Being-a-Wallflower-The-poster.jpg"></a>
-                <h1 class="text-overlay"> Other movie here</h1>
-            </div>
-            <a href="">
-                <img src="images/button-left.png" class="button-left">
-            </a>
-
-            <a href="">
-                <img src="images/button-right.png" class="button-right">
-            </a>
-        </div>
-    </div>
 
     <div class="recommendations">
         <div class="user-comments">
@@ -98,7 +64,7 @@
             <?php $count++; ?>
             <?php endforeach ?>
         </div>
-        <a href="<?php echo(get_post_type_archive_link("recommendations"));?>">More recommendations...</a>
+        <a href="<?php echo(get_post_type_archive_link("recommendation"));?>">More recommendations...</a>
     </div>
 
 
@@ -135,7 +101,7 @@
                 <?php endforeach ?>
 
             </ul>
-            <a href="#">More Movies...</a>
+            <a href="<?php echo(get_post_type_archive_link( "movie" )); ?>">More Movies...</a>
         </div>
 
         <?php
@@ -182,7 +148,6 @@
                         $event_date = rwmb_meta('siml_event_time', 'type=datetime', $event -> ID );
                         $event_date = date("dS M", strtotime($event_date));
 
-
                         ?>
 
                         <li>
@@ -192,7 +157,7 @@
                     <?php endforeach ?>
                 </ul>
             </div>
-            <a href="#">More Events...</a>
+            <a href="<?php echo(get_post_type_archive_link( "event" )); ?>">More Events...</a>
         </div>
     </div>
 <?php get_footer(); ?>
