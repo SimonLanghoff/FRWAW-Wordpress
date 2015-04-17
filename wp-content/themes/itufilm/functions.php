@@ -333,8 +333,8 @@ function add_recommendation ($args) {
 
         'fields' => array(
             array(
-                //            list of similar movie id's
-                'id' => $prefix . 'recommendations',
+                // Let the user select from the list of movies
+                'id' => $prefix . 'recommended_movie',
                 'name' => 'Recommended Movie',
                 'type' => 'select_advanced',
                 'options' => get_movie_list(),
@@ -375,34 +375,33 @@ function get_movie_info($movie_id){
             $movie_title = "twin-peaks-1990";
             break;
         case "movie8":
-            $movie_title = "terminator-1990";
+            $movie_title = "terminator-1984";
             break;
         case "movie9":
-            $movie_title = "her-2014";
+            $movie_title = "her-2013";
             break;
         case "movie10":
             $movie_title = "searching-for-sugar-man-2012";
             break;
         case "movie11":
-            $movie_title = "the-room-1990";
+            $movie_title = "the-room-2003";
             break;
         default:
-            echo("Movie not recognized!");
-            break;
+            return null;
     }
 
 
     $movie_info = null;
 
     // Query args for fetching a similar movie.
-    $next_event_query_args = array(
+    $get_movie_query_args = array(
         'name'              => $movie_title,
         'post_type'			=> 'movie',
         'posts_per_page'	=> 1
     );
 
     // Get all the news items
-    $movie_info = get_posts($next_event_query_args);
+    $movie_info = get_posts($get_movie_query_args);
     // Movie is wrapped in an array, get the first item.
     $movie_info = reset($movie_info);
 

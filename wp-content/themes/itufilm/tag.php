@@ -1,5 +1,6 @@
 <?php get_header(); ?>
-<section id="content" role="main">
+<?php get_sidebar(); ?>
+<section id="content" role="main" class="grid_9">
 <header class="header">
 <h1 class="entry-title"><?php _e( 'Tag Archives: ', 'itufilm' ); ?><?php single_tag_title(); ?></h1>
 </header>
@@ -8,5 +9,4 @@
 <?php endwhile; endif; ?>
 <?php get_template_part( 'nav', 'below' ); ?>
 </section>
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>

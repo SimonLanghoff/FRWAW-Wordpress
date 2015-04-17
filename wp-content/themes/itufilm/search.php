@@ -1,5 +1,6 @@
 <?php get_header(); ?>
-<section id="content" role="main">
+<?php get_sidebar(); ?>
+<section id="content" class="grid_9" role="main">
 <?php if ( have_posts() ) : ?>
 <header class="header">
 <h1 class="entry-title"><?php printf( __( 'Search Results for: %s', 'itufilm' ), get_search_query() ); ?></h1>
@@ -20,5 +21,4 @@
 </article>
 <?php endif; ?>
 </section>
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>

@@ -1,5 +1,6 @@
 <?php get_header(); ?>
-<section id="content" role="main">
+<?php get_sidebar(); ?>
+<section id="content" role="main" class="grid_9">
 <header class="header">
 <?php the_post(); ?>
 <h1 class="entry-title author"><?php _e( 'Author Archives', 'itufilm' ); ?>: <?php the_author_link(); ?></h1>
@@ -11,5 +12,4 @@
 <?php endwhile; ?>
 <?php get_template_part( 'nav', 'below' ); ?>
 </section>
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>

@@ -43,60 +43,62 @@
             <h2> Latest Recommendations </h2>
 
             <?php
-                // Get the recommendations
-                            
+            // Get the recommendations
+
+            // TODO: Sort by date.
+            // Query args for fetching the featured screening.
+            $get_recommendations_query_args = array(
+                'post_type'			=> 'Recommendation',
+                'posts_per_page'	=> 10,
+                'orderby'			=> 'post_date',
+                'order'				=> 'ASC'
+            );
+
+            $recommendations = get_posts($get_recommendations_query_args);
+
 
             ?>
+            <?php $count = 0 ?>
+            <?php foreach($recommendations as $recommendation):?>
+
+                <?php
+
+                // Get meta data (
+                $recommended_movie = rwmb_meta('siml_recommended_movie', 'type=text', $recommendation -> ID );
+                $recommended_movie = get_movie_info($recommended_movie);
+
+                $username = get_userdata($recommendation -> post_author)->display_name; // accessed using magic! woo!
+                $movie_link = get_permalink($recommended_movie -> ID);
+                $movie_title = $recommended_movie -> post_title;
+                $user_link = get_permalink($recommendation -> post_author);
 
 
-            <article class="comment row-even">
+
+                $date = $recommendation -> post_date_gmt;
+                $date = strtotime($date);
+
+                ?>
+
+            <?php ?>
+
+            <article class="comment <?php  if($count % 2 == 0) { echo "row-even"; }   ?>  ">
                 <div class="comment-picture">
-                    <img src="images/profile_dummy.jpg">
+                    <?php echo " <img src=\"" . get_template_directory_uri() . "/images/profile_dummy.jpg\" >"?>
                 </div>
                 <div class="comment-text">
-                    <h4>Simon Langhoff recommended <a href="#">Terminator</a></h4>
-                    <span class="date">23 feb. 2015</span>
+                    <?php echo "<h4> <a href='$user_link'> $username </a> recommended <a href='$movie_link'> $movie_title </a></h4>"; ?>
+
+                    <span class="date"><?php echo (date("j M. Y" , $date)); ?></span>
                     <p>
-                        'The Terminator' is not a perfect picture. The movie lags in some parts,
-                        and the romance element is fairly contrived. Despite all that the movie brims with
-                        energy and promise, a script that mostly delivers, characters you can enjoy,
-                        and the ultimate Arnie role.
-                        <br>
-                        Well worth catching. 8/10.
+                        <?php echo ($recommendation -> post_content); ?>
                     </p>
                 </div>
             </article>
-            <article class="comment">
-                <div class="comment-picture">
-                    <img src="images/profile_dummy.jpg">
-                </div>
-                <div class="comment-text">
-                    <h4>Simon Langhoff recommended <a href="#">Terminator</a></h4>
-                    <span class="date">20 feb. 2015</span>
-                    <p>
-                        'Her' is a complex film with a much deeper meaning that lies beneath the surface.
-                        A beautifully crafted motion picture, this quirky love story is sure to resonate with
-                        you once you've seen it. It is an extremely interesting (and realistic) look at the future
-                        - Jonze's quaint and poignant film is a must-see! 9/10
-                    </p>
-                </div>
-            </article>
-            <article class="comment row-even">
-                <div class="comment-picture">
-                    <img src="images/profile_dummy.jpg">
-                </div>
-                <div class="comment-text">
-                    <h4>Billy Joel recommended <a href="#">The Room</a></h4>
-                    <span class="date">19 feb. 2015</span>
-                    <p>
-                        This film is completely worth seeing.
-                        A friend of mine recently said it was as if a deer made a movie about human interaction,
-                        unable to comprehend what it is to be a human being. It is hilarious.
-                    </p>
-                </div>
-            </article>
+
+            <?php $count++; ?>
+            <?php endforeach ?>
         </div>
-        <a href="#">More recommendations...</a>
+        <a href="<?php echo(get_post_type_archive_link("recommendations"));?>">More recommendations...</a>
     </div>
 
 
@@ -174,21 +176,4 @@
             <a href="#">More Events...</a>
         </div>
     </div>
-
-<!---->
-<!--<section id="content" role="main">-->
-<?php //if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-<!--<article id="post---><?php //the_ID(); ?><!--" --><?php //post_class(); ?>
-<!--<header class="header">-->
-<!--<h1 class="entry-title">--><?php //the_title(); ?><!--</h1> --><?php //edit_post_link(); ?>
-<!--</header>-->
-<!--<section class="entry-content">-->
-<?php //if ( has_post_thumbnail() ) { the_post_thumbnail(); } ?>
-<?php //the_content(); ?>
-<!--<div class="entry-links">--><?php //wp_link_pages(); ?><!--</div>-->
-<!--</section>-->
-<!--</article>-->
-<?php //if ( ! post_password_required() ) comments_template( '', true ); ?>
-<?php //endwhile; endif; ?>
-<!--</section>-->
 <?php get_footer(); ?>

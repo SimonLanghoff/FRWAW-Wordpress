@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 <?php get_sidebar(); ?>
-    <section id="content" role="main" class="grid_9">
+<section id="content" role="main" class="grid_9">
 <header class="header">
 <h1 class="entry-title"><?php 
 if ( is_day() ) { printf( __( 'Daily Archives: %s', 'itufilm' ), get_the_time( get_option( 'date_format' ) ) ); }

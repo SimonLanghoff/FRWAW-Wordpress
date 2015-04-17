@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 <?php get_sidebar(); ?>
-<section id="content" role="main">
+    <section id="content" role="main" class="grid_9">
 <article id="post-0" class="post not-found">
 <header class="header">
 <h1 class="entry-title"><?php _e( 'Not Found', 'itufilm' ); ?></h1>
